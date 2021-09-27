@@ -22,15 +22,24 @@ var Home = function (_React$Component) {
 	}
 
 	_createClass(Home, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			// this.props.refFor.current.modal('toggle')
+		}
+	}, {
 		key: "render",
 		value: function render() {
 
-			var banner = ["https://d1an7tx677lu0y.cloudfront.net/2021/07/22-copy-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/pool-min-1.jpg"];
+			var bannerData = {
+				"id": "banner",
+				"title": "Home",
+				"images": ["https://d1an7tx677lu0y.cloudfront.net/2021/07/22-copy-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/pool-min-1.jpg"]
+			};
 
 			var aboutUsData = {
 				id: "about",
-				title: "The Chambers",
-				description: "Step into \u2018The Chambers\u2019- the premium commercial office space for entrepreneurs located at the iconic architectural marvel of Kohinoor Square. \u2018The Chambers\u2019 is located in Kohinoor Square from the 4th to the 13th floor with offices starting from 769 sq.ft to 1331 sq.ft (RERA Carpet Area). And here\u2019s why it is probably a good decision to buy a Chambers office whether it is for end-use or for investment.\n\n\t  Kohinoor Square is one of the tallest commercial towers in the country and is an iconic structure located at the centre of the city. Investments in iconic commercial properties appreciate faster and depreciate slower than the market.\n\t  \n\t  The location is congestion-free and will give you easy access to trains, metros and airports.",
+				title: "About Us",
+				description: "Step into \u2018The Chambers\u2019- the premium commercial office space for entrepreneurs located at the iconic architectural marvel of Kohinoor Square. \u2018The Chambers\u2019 is located in Kohinoor Square from the 4th to the 13th floor with offices starting from 769 sq.ft to 1331 sq.ft (RERA Carpet Area). And here\u2019s why it is probably a good decision to buy a Chambers office whether it is for end-use or for investment.\n\n\t\t\tKohinoor Square is one of the tallest commercial towers in the country and is an iconic structure located at the centre of the city. Investments in iconic commercial properties appreciate faster and depreciate slower than the market.\n\t\t\t\n\t\t\tThe location is congestion-free and will give you easy access to trains, metros and airports.",
 				brochureLink: "https://project-microsite-data.s3.amazonaws.com/kohinoor_abcd/about/Vaishali's Resume.pdf",
 				image: "https://d1an7tx677lu0y.cloudfront.net/2021/07/image2.jpg"
 			};
@@ -106,46 +115,143 @@ var Home = function (_React$Component) {
 			var footerData = {
 				id: "footer",
 				title: "Footer",
-				description: "This Project is Developed By M/s. Panchsheel 1 Upgrade LLP, Group Company of Rajshree Builders.\n\n\tThe Project is registered as Rajshree Eleven East with MahaRERA Registration No. P51800030117, Available at http://maharera.mahaonline.gov.in",
+				description: "This Project is Developed By M/s. Panchsheel 1 Upgrade LLP, Group Company of Rajshree Builders.\n\n\t\t\tThe Project is registered as Rajshree Eleven East with MahaRERA Registration No. P51800030117, Available at http://maharera.mahaonline.gov.in",
 				disclaimer: "This is not an offer, invitation to offer, and/or commitment of any nature and the content hereof is not and should not be constructed as an offer/invitation to offer/contract or any intention thereof and/or any disclosure under any statute of any nature whatsoever. All plans, designs, Images, renders, specification, dimensions, facilities and other details herein are artistic impressions and stock images and purely for illustrative and representational purpose and indicative in nature and the intended recipient should note that these are to be treated as purely provisional and informative and as such only tentative subject to approval from respective authorities. No warranty is expressly or impliedly given that the completed development will comply in any degree with such artist\u2019s impression as depicted. The photographs contained herein are stock/standard photography and may have been taken at at location other that the project site and are used to indicate a conceptual lifestyles. The actual images/views have been enhanced/touched up/airbrushed for visual, illustrative and creative purposes. All specifications of the flat/project shall be as per the final agreement between the parties. Recipients are advised to use their discretion in relying on the information/amenities described/described/shown herein. The visitor/recipient is aware that the furniture, fittings and fixtures displayed in the sample/show flat/ show residence at the sales pavilion /brouchers are only for the purpose of showcasing the flats and we shall not be liable, required and/or obliged to procide any further, fittings as displayed in the sample/show flat/show residence at the sales pavilion/brochuers. The color shades of wall, tiles etc., are for representational purpose and will vary in planning and designing and upon actual construction. The render for internal spaces is only to serve as an example of the suggested space management and possible utilization of space. Any party desirous/interested in the project need to enter into agreement for sale and the development/transaction shall be governed by the terms and conditions of the agreement for sale. Project Financed by Bajaj Home Finance Ltd. (BHFL). *Government taxes as applicable. *Terms and Conditions apply."
 			};
+
+			var sections = [bannerData, aboutUsData, amenitiesData, virtualTourData, floorPlanData, galleryData, contactUsData, footerData];
 
 			return React.createElement(
 				"div",
 				null,
-				React.createElement(SlideShow, {
-					section: "banner",
-					imgArray: banner,
-					cssClass: "bannerContainer" }),
-				React.createElement(AboutUs, {
-					section: "aboutUs",
-					aboutUsData: aboutUsData,
-					cssClass: "verticallyMiddle" }),
-				React.createElement(Amenities, {
-					section: "amenities",
-					amenitiesData: amenitiesData,
-					imageCss: "amenityIcon",
-					containerCss: "verticallyMiddle" }),
-				React.createElement(VirtualTour, {
-					section: "virtualTour",
-					virtualTourData: virtualTourData }),
-				React.createElement(Gallery, {
-					section: "gallery",
-					galleryData: galleryData }),
-				React.createElement(FloorPlan, {
-					section: "floorPlan",
-					floorPlanData: floorPlanData
+				React.createElement(
+					"nav",
+					{ className: "navbar fixed-top navbar-expand-lg navbar-light header " },
+					React.createElement(
+						"a",
+						{ className: "navbar-brand", href: "#" },
+						React.createElement("img", {
+							className: "logo",
+							src: "https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png", alt: "" })
+					),
+					React.createElement(
+						"button",
+						{ className: "navbar-toggler", type: "button", "data-toggle": "collapse", "data-target": "#navbarNav", "aria-controls": "navbarNav", "aria-expanded": "false", "aria-label": "Toggle navigation" },
+						React.createElement("span", { className: "navbar-toggler-icon" })
+					),
+					React.createElement(
+						"div",
+						{ className: "collapse navbar-collapse", id: "navbarNav" },
+						React.createElement(
+							"ul",
+							{ className: "navbar-nav d-flex justify-content-end" },
+							sections.map(function (section, index) {
+								if (index == 0) {
+									return React.createElement(
+										"li",
+										{ className: "nav-item active", key: section.id },
+										React.createElement(
+											"a",
+											{ className: "nav-link", href: "#" + section.id },
+											section.title,
+											React.createElement(
+												"span",
+												{ className: "sr-only" },
+												"(current)"
+											)
+										)
+									);
+								} else if (section.id !== 'footer') {
+									return React.createElement(
+										"li",
+										{ className: "nav-item", key: section.id },
+										React.createElement(
+											"a",
+											{ className: "nav-link", href: "#" + section.id },
+											section.title
+										)
+									);
+								}
+							})
+						)
+					)
+				),
+				sections.map(function (section) {
+					switch (section.id) {
+						case 'banner':
+							return React.createElement(SlideShow, {
+								key: section.id,
+								section: section.id,
+								imgArray: bannerData.images,
+								cssClass: "bannerContainer" });
+							break;
+
+						case 'about':
+							return React.createElement(AboutUs, {
+								key: section.id,
+								section: section.id,
+								aboutUsData: aboutUsData,
+								cssClass: "verticallyMiddle" });
+							break;
+
+						case 'amenities':
+							return React.createElement(Amenities, {
+								key: section.id,
+								section: section.id,
+								amenitiesData: amenitiesData,
+								imageCss: "amenityIcon",
+								containerCss: "verticallyMiddle" });
+							break;
+
+						case 'virtualTour':
+							return React.createElement(VirtualTour, {
+								key: section.id,
+								section: section.id,
+								virtualTourData: virtualTourData });
+							break;
+
+						case 'gallery':
+							return React.createElement(Gallery, {
+								key: section.id,
+								section: section.id,
+								galleryData: galleryData });
+							break;
+
+						case 'floorPlans':
+							return React.createElement(FloorPlan, {
+								key: section.id,
+								section: section.id,
+								floorPlanData: floorPlanData
+							});
+							break;
+
+						case 'contactUs':
+							return React.createElement(ContactUs, {
+								key: section.id,
+								section: section.id,
+								contactUsData: contactUsData,
+								brokerData: brokerData
+							});
+							break;
+
+						case 'footer':
+							return React.createElement(Footer, {
+								key: section.id,
+								section: section.id,
+								footerData: footerData,
+								cssClass: "verticallyMiddle"
+							});
+							break;
+
+						default:
+							break;
+					}
 				}),
-				React.createElement(ContactUs, {
-					section: "contactus",
-					contactUsData: contactUsData,
-					brokerData: brokerData
-				}),
-				React.createElement(Footer, {
-					section: "footer",
-					footerData: footerData,
-					cssClass: "verticallyMiddle"
-				})
+				React.createElement(
+					ModalContainer,
+					null,
+					React.createElement(EnquiryForm, null)
+				)
 			);
 		}
 	}]);
@@ -227,12 +333,13 @@ var SlideShow = function (_React$Component2) {
 			var _this4 = this;
 
 			var _props = this.props,
+			    section = _props.section,
 			    imgArray = _props.imgArray,
 			    cssClass = _props.cssClass;
 
 			return React.createElement(
 				"div",
-				null,
+				{ id: section },
 				React.createElement(
 					"div",
 					{ className: "slideshow-container" },
@@ -283,9 +390,6 @@ var AboutUs = function (_React$Component3) {
 	}
 
 	_createClass(AboutUs, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {}
-	}, {
 		key: "render",
 		value: function render() {
 			var _props$aboutUsData = this.props.aboutUsData,
@@ -297,7 +401,7 @@ var AboutUs = function (_React$Component3) {
 
 			return React.createElement(
 				"div",
-				null,
+				{ id: this.props.section },
 				React.createElement(
 					"h4",
 					{ className: "sectionTitle" },
@@ -353,9 +457,6 @@ var Amenities = function (_React$Component4) {
 	}
 
 	_createClass(Amenities, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {}
-	}, {
 		key: "render",
 		value: function render() {
 			var _this7 = this;
@@ -368,7 +469,7 @@ var Amenities = function (_React$Component4) {
 
 			return React.createElement(
 				"div",
-				{ className: "amenityContainer" },
+				{ id: this.props.section, className: "amenityContainer" },
 				React.createElement(
 					"h4",
 					{ className: "sectionTitle" },
@@ -380,11 +481,9 @@ var Amenities = function (_React$Component4) {
 					list.map(function (amenityObj, index) {
 						return React.createElement(
 							"div",
-							{
-								className: "col-md-2 col-sm-4 col-xs-6 " + _this7.props.containerCss + " amenityIconContainr",
+							{ className: "col-md-2 col-sm-4 col-xs-6 " + _this7.props.containerCss + " amenityIconContainr",
 								style: { textAlign: "center" },
-								key: index
-							},
+								key: index },
 							React.createElement("img", { className: _this7.props.imageCss, src: amenityObj.icon }),
 							React.createElement(
 								"div",
@@ -428,9 +527,6 @@ var VirtualTour = function (_React$Component5) {
 	}
 
 	_createClass(VirtualTour, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {}
-	}, {
 		key: "render",
 		value: function render() {
 			var _props$virtualTourDat = this.props.virtualTourData,
@@ -440,7 +536,7 @@ var VirtualTour = function (_React$Component5) {
 
 			return React.createElement(
 				"div",
-				{ className: "amenityContainer" },
+				{ id: this.props.section, className: "amenityContainer" },
 				React.createElement(
 					"h4",
 					{ className: "sectionTitle" },
@@ -476,7 +572,7 @@ var Gallery = function (_React$Component6) {
 
 			return React.createElement(
 				"div",
-				null,
+				{ id: this.props.section },
 				React.createElement(
 					"div",
 					{ className: "row" },
@@ -520,7 +616,7 @@ var FloorPlan = function (_React$Component7) {
 
 			return React.createElement(
 				"div",
-				{ className: "amenityContainer" },
+				{ id: this.props.section, className: "amenityContainer" },
 				React.createElement(
 					"h4",
 					{ className: "sectionTitle" },
@@ -542,25 +638,12 @@ var ContactUs = function (_React$Component8) {
 
 		var _this11 = _possibleConstructorReturn(this, (ContactUs.__proto__ || Object.getPrototypeOf(ContactUs)).call(this, props));
 
-		_this11.onChangeHandler = function (e) {
-			var inputData = {};
-			inputData[e.target.name] = e.target.value;
-			_this11.setState(inputData);
-		};
-
 		_this11.onSubmitEquiryForm = function (e) {
 			e.preventDefault();
 			console.log("form submitted");
 		};
 
 		console.log("came in contact us constructor ", props);
-		_this11.state = {
-			name: '',
-			email: '',
-			phoneNo: '',
-			regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-		};
 		return _this11;
 	}
 
@@ -575,95 +658,11 @@ var ContactUs = function (_React$Component8) {
 			var brokerData = this.props.brokerData;
 			return React.createElement(
 				"div",
-				{ className: "row contactUs" },
+				{ id: this.props.section, className: "row contactUs" },
 				React.createElement(
 					"div",
 					{ className: "col-md-4 col-sm-6 col-xs-12" },
-					React.createElement(
-						"div",
-						{ className: "col-12" },
-						React.createElement(
-							"h4",
-							null,
-							"Get In Touch"
-						),
-						React.createElement(
-							"div",
-							{ style: { marginBottom: '14px' } },
-							"Please fill in your details below and we will get in touch with you shorlty"
-						)
-					),
-					React.createElement(
-						"form",
-						null,
-						React.createElement(
-							"div",
-							{ className: "row" },
-							React.createElement(
-								"div",
-								{ className: "col-12" },
-								React.createElement(
-									"label",
-									{ htmlFor: "name", className: "col-form-label" },
-									"Name"
-								),
-								React.createElement("input", {
-									type: "text",
-									name: "name",
-									id: "name",
-									className: "form-control",
-									value: this.state.name,
-									onChange: this.onChangeHandler,
-									required: true })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-12" },
-								React.createElement(
-									"label",
-									{ htmlFor: "email" },
-									"Email"
-								),
-								React.createElement("input", {
-									type: "email",
-									name: "email",
-									id: "email",
-									className: "form-control",
-									value: this.state.email,
-									pattern: this.state.regex,
-									onChange: this.onChangeHandler,
-									required: true })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-12" },
-								React.createElement(
-									"label",
-									{ htmlFor: "phoneNo" },
-									"Phone Number"
-								),
-								React.createElement("input", {
-									type: "tel",
-									name: "phoneNo",
-									id: "phoneNo",
-									className: "form-control",
-									value: this.state.phoneNo,
-									pattern: "[0-9]{10}",
-									onChange: this.onChangeHandler,
-									required: true })
-							),
-							React.createElement(
-								"p",
-								{ className: "col-12 tncLabel" },
-								"By submitting above details, you are authorizing Rajshree Builders and its associate/partner companies to call you and send transcational/promotional communicatin even though you may be registered under DNC."
-							)
-						),
-						React.createElement(
-							"button",
-							{ className: "btn", onClick: this.onSubmitEquiryForm },
-							"Submit"
-						)
-					)
+					React.createElement(EnquiryForm, null)
 				),
 				React.createElement(
 					"div",
@@ -973,6 +972,178 @@ var Footer = function (_React$Component10) {
 	}]);
 
 	return Footer;
+}(React.Component);
+
+var ModalContainer = function (_React$Component11) {
+	_inherits(ModalContainer, _React$Component11);
+
+	function ModalContainer(props) {
+		_classCallCheck(this, ModalContainer);
+
+		var _this14 = _possibleConstructorReturn(this, (ModalContainer.__proto__ || Object.getPrototypeOf(ModalContainer)).call(this, props));
+
+		_this14.modalRef = React.createRef();
+		return _this14;
+	}
+
+	_createClass(ModalContainer, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			console.log(this.modalRef.current);
+			// this.modalRef.current.modal('show') // not working by ref
+			$('#exampleModal').modal('show');
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"div",
+				null,
+				React.createElement(
+					"div",
+					{ className: "modal fade", ref: this.modalRef, id: "exampleModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true" },
+					React.createElement(
+						"div",
+						{ className: "modal-dialog", role: "document" },
+						React.createElement(
+							"div",
+							{ className: "modal-content" },
+							React.createElement(
+								"div",
+								{ className: "modal-body" },
+								this.props.children
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return ModalContainer;
+}(React.Component);
+
+var EnquiryForm = function (_React$Component12) {
+	_inherits(EnquiryForm, _React$Component12);
+
+	function EnquiryForm(props) {
+		_classCallCheck(this, EnquiryForm);
+
+		var _this15 = _possibleConstructorReturn(this, (EnquiryForm.__proto__ || Object.getPrototypeOf(EnquiryForm)).call(this, props));
+
+		_this15.onChangeHandler = function (e) {
+			var inputData = {};
+			inputData[e.target.name] = e.target.value;
+			_this15.setState(inputData);
+		};
+
+		console.log("came in contact us constructor ", props);
+		_this15.state = {
+			name: '',
+			email: '',
+			phoneNo: '',
+			regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+		};
+		return _this15;
+	}
+
+	_createClass(EnquiryForm, [{
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				React.Fragment,
+				null,
+				React.createElement(
+					"div",
+					{ className: "col-12" },
+					React.createElement(
+						"h4",
+						null,
+						"Get In Touch"
+					),
+					React.createElement(
+						"div",
+						{ style: { marginBottom: '14px' } },
+						"Please fill in your details below and we will get in touch with you shorlty"
+					)
+				),
+				React.createElement(
+					"form",
+					null,
+					React.createElement(
+						"div",
+						{ className: "row" },
+						React.createElement(
+							"div",
+							{ className: "col-12" },
+							React.createElement(
+								"label",
+								{ htmlFor: "name", className: "col-form-label" },
+								"Name"
+							),
+							React.createElement("input", {
+								type: "text",
+								name: "name",
+								id: "name",
+								className: "form-control",
+								value: this.state.name,
+								onChange: this.onChangeHandler,
+								required: true })
+						),
+						React.createElement(
+							"div",
+							{ className: "col-12" },
+							React.createElement(
+								"label",
+								{ htmlFor: "email" },
+								"Email"
+							),
+							React.createElement("input", {
+								type: "email",
+								name: "email",
+								id: "email",
+								className: "form-control",
+								value: this.state.email,
+								pattern: this.state.regex,
+								onChange: this.onChangeHandler,
+								required: true })
+						),
+						React.createElement(
+							"div",
+							{ className: "col-12" },
+							React.createElement(
+								"label",
+								{ htmlFor: "phoneNo" },
+								"Phone Number"
+							),
+							React.createElement("input", {
+								type: "tel",
+								name: "phoneNo",
+								id: "phoneNo",
+								className: "form-control",
+								value: this.state.phoneNo,
+								pattern: "[0-9]{10}",
+								onChange: this.onChangeHandler,
+								required: true })
+						),
+						React.createElement(
+							"p",
+							{ className: "col-12 tncLabel" },
+							"By submitting above details, you are authorizing Rajshree Builders and its associate/partner companies to call you and send transcational/promotional communicatin even though you may be registered under DNC."
+						)
+					),
+					React.createElement(
+						"button",
+						{ className: "btn", onClick: this.onSubmitEquiryForm },
+						"Submit"
+					)
+				)
+			);
+		}
+	}]);
+
+	return EnquiryForm;
 }(React.Component);
 //   var output = Babel.transform(<Home />, { presets: ["env"] }).code;
 
