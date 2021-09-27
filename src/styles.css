@@ -1,32 +1,33 @@
 .row {
   margin: 0;
 }
+
 .sectionTitle{
   text-align: center;
 }
 .bannerContainer{
-     width: 100%;
-     height: 90vh;
+	 width: 100%;
+	 height: 90vh;
 }
 
 .verticallyMiddle{
-    vertical-align: middle;
-    margin: auto;
+	vertical-align: middle;
+	margin: auto;
 }
 
 .btn{
-     padding: 12px;
+	 padding: 12px;
 }
 
 .amenityIcon{
-     height: 50px;
-     width: 70px;
-     text-align: center;
+	 height: 50px;
+	 width: 70px;
+	 text-align: center;
 }
 
 .amenityContainer{
-     background-color: black;
-     padding: 20px;
+	 background-color: black;
+	 padding: 20px;
 }
 
 .amenityIconContainr{
@@ -39,6 +40,15 @@
   margin: 4px;
 }
 
+.galleryImgDiv{
+  padding: 15px;
+}
+
+.galleryImgDiv img{
+  height: 230px;
+  width: inherit;
+}
+
 .footer{
   text-align: center;
   padding: 30px;
@@ -46,6 +56,41 @@
   font-size: inherit;
   color: white;
   background-color: #C49675;
+}
+
+.form-control {
+	border: none;
+	border-bottom: 1px solid #dfd5d5;
+	margin-bottom: 24px;
+}
+
+.tncLabel{
+	font-size: 10.5px;
+}
+
+.contactUs {
+	padding: 20px;
+}
+.contactUs .brokerDetails{
+	background-image: url(https://d1an7tx677lu0y.cloudfront.net/2021/07/bg1-contact-1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	color: #e5e3e3;
+}
+
+.brokerDetails .row {
+	margin-bottom: 10px;
+}
+
+.brokerDetailsTitle {
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.mapLocation{
+	width: 100%;
+	height: 100%;
 }
 
 * {box-sizing: border-box;}
@@ -115,5 +160,5 @@ img {vertical-align: middle;}
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-     .slideshow-container .text {font-size: 11px}
+	 .slideshow-container .text {font-size: 11px}
 }
