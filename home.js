@@ -18,11 +18,32 @@ var Home = function (_React$Component) {
 	function Home(props) {
 		_classCallCheck(this, Home);
 
-		return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+		_this.setStyleOfWholeBody = function (settings) {
+			var r = document.querySelector(':root');
+			if (settings.fontFamily) r.style.setProperty('--fontFamily', settings.fontFamily);
+			if (settings.lineHeight) r.style.setProperty('--lineHeight', settings.lineHeight);
+			if (settings.themeColor) r.style.setProperty('--themeColor', settings.themeColor);
+			if (settings.fontColor) r.style.setProperty('--fontColor', settings.fontColor);
+		};
+
+		return _this;
 	}
 
 	_createClass(Home, [{
-		key: "render",
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			// var settings = {
+			// 	themeColor : '#0A0A0A'
+			// }
+			this.setStyleOfWholeBody({});
+		}
+
+		// Set font family of our choice for whole body
+
+	}, {
+		key: 'render',
 		value: function render() {
 
 			var bannerData = {
@@ -34,7 +55,7 @@ var Home = function (_React$Component) {
 			var aboutUsData = {
 				id: "about",
 				title: "About Us",
-				description: "Step into \u2018The Chambers\u2019- the premium commercial office space for entrepreneurs located at the iconic architectural marvel of Kohinoor Square. \u2018The Chambers\u2019 is located in Kohinoor Square from the 4th to the 13th floor with offices starting from 769 sq.ft to 1331 sq.ft (RERA Carpet Area). And here\u2019s why it is probably a good decision to buy a Chambers office whether it is for end-use or for investment.\n\n\t\t\tKohinoor Square is one of the tallest commercial towers in the country and is an iconic structure located at the centre of the city. Investments in iconic commercial properties appreciate faster and depreciate slower than the market.\n\t\t\t\n\t\t\tThe location is congestion-free and will give you easy access to trains, metros and airports.",
+				description: 'Step into \u2018The Chambers\u2019- the premium commercial office space for entrepreneurs located at the iconic architectural marvel of Kohinoor Square. \u2018The Chambers\u2019 is located in Kohinoor Square from the 4th to the 13th floor with offices starting from 769 sq.ft to 1331 sq.ft (RERA Carpet Area). And here\u2019s why it is probably a good decision to buy a Chambers office whether it is for end-use or for investment.\n\n\t\t\tKohinoor Square is one of the tallest commercial towers in the country and is an iconic structure located at the centre of the city. Investments in iconic commercial properties appreciate faster and depreciate slower than the market.\n\t\t\t\n\t\t\tThe location is congestion-free and will give you easy access to trains, metros and airports.',
 				brochureLink: "https://project-microsite-data.s3.amazonaws.com/kohinoor_abcd/about/Vaishali's Resume.pdf",
 				image: "https://d1an7tx677lu0y.cloudfront.net/2021/07/image2.jpg"
 			};
@@ -110,60 +131,61 @@ var Home = function (_React$Component) {
 			var footerData = {
 				id: "footer",
 				title: "Footer",
-				description: "This Project is Developed By M/s. Panchsheel 1 Upgrade LLP, Group Company of Rajshree Builders.\n\n\t\t\tThe Project is registered as Rajshree Eleven East with MahaRERA Registration No. P51800030117, Available at http://maharera.mahaonline.gov.in",
-				disclaimer: "This is not an offer, invitation to offer, and/or commitment of any nature and the content hereof is not and should not be constructed as an offer/invitation to offer/contract or any intention thereof and/or any disclosure under any statute of any nature whatsoever. All plans, designs, Images, renders, specification, dimensions, facilities and other details herein are artistic impressions and stock images and purely for illustrative and representational purpose and indicative in nature and the intended recipient should note that these are to be treated as purely provisional and informative and as such only tentative subject to approval from respective authorities. No warranty is expressly or impliedly given that the completed development will comply in any degree with such artist\u2019s impression as depicted. The photographs contained herein are stock/standard photography and may have been taken at at location other that the project site and are used to indicate a conceptual lifestyles. The actual images/views have been enhanced/touched up/airbrushed for visual, illustrative and creative purposes. All specifications of the flat/project shall be as per the final agreement between the parties. Recipients are advised to use their discretion in relying on the information/amenities described/described/shown herein. The visitor/recipient is aware that the furniture, fittings and fixtures displayed in the sample/show flat/ show residence at the sales pavilion /brouchers are only for the purpose of showcasing the flats and we shall not be liable, required and/or obliged to procide any further, fittings as displayed in the sample/show flat/show residence at the sales pavilion/brochuers. The color shades of wall, tiles etc., are for representational purpose and will vary in planning and designing and upon actual construction. The render for internal spaces is only to serve as an example of the suggested space management and possible utilization of space. Any party desirous/interested in the project need to enter into agreement for sale and the development/transaction shall be governed by the terms and conditions of the agreement for sale. Project Financed by Bajaj Home Finance Ltd. (BHFL). *Government taxes as applicable. *Terms and Conditions apply."
+				description: 'This Project is Developed By M/s. Panchsheel 1 Upgrade LLP, Group Company of Rajshree Builders.\n\n\t\t\tThe Project is registered as Rajshree Eleven East with MahaRERA Registration No. P51800030117, Available at http://maharera.mahaonline.gov.in',
+				disclaimer: 'This is not an offer, invitation to offer, and/or commitment of any nature and the content hereof is not and should not be constructed as an offer/invitation to offer/contract or any intention thereof and/or any disclosure under any statute of any nature whatsoever. All plans, designs, Images, renders, specification, dimensions, facilities and other details herein are artistic impressions and stock images and purely for illustrative and representational purpose and indicative in nature and the intended recipient should note that these are to be treated as purely provisional and informative and as such only tentative subject to approval from respective authorities. No warranty is expressly or impliedly given that the completed development will comply in any degree with such artist\u2019s impression as depicted. The photographs contained herein are stock/standard photography and may have been taken at at location other that the project site and are used to indicate a conceptual lifestyles. The actual images/views have been enhanced/touched up/airbrushed for visual, illustrative and creative purposes. All specifications of the flat/project shall be as per the final agreement between the parties. Recipients are advised to use their discretion in relying on the information/amenities described/described/shown herein. The visitor/recipient is aware that the furniture, fittings and fixtures displayed in the sample/show flat/ show residence at the sales pavilion /brouchers are only for the purpose of showcasing the flats and we shall not be liable, required and/or obliged to procide any further, fittings as displayed in the sample/show flat/show residence at the sales pavilion/brochuers. The color shades of wall, tiles etc., are for representational purpose and will vary in planning and designing and upon actual construction. The render for internal spaces is only to serve as an example of the suggested space management and possible utilization of space. Any party desirous/interested in the project need to enter into agreement for sale and the development/transaction shall be governed by the terms and conditions of the agreement for sale. Project Financed by Bajaj Home Finance Ltd. (BHFL). *Government taxes as applicable. *Terms and Conditions apply.'
 			};
 
-			var sections = [bannerData, aboutUsData, amenitiesData, virtualTourData, floorPlanData, galleryData, contactUsData, footerData];
+			var sections = [bannerData, aboutUsData, amenitiesData, virtualTourData, galleryData, floorPlanData, contactUsData, footerData];
 
 			return React.createElement(
-				"div",
+				'div',
 				null,
 				React.createElement(
-					"nav",
-					{ className: "navbar fixed-top navbar-expand-sm navbar-light header " },
+					'nav',
+					{ className: 'navbar fixed-top navbar-expand-sm themeColor ' },
 					React.createElement(
-						"a",
-						{ className: "navbar-brand", href: "#" },
-						React.createElement("img", {
-							className: "logo",
-							src: "https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png", alt: "" })
+						'a',
+						{ className: 'navbar-brand', href: '#' },
+						React.createElement('img', {
+							className: 'logo',
+							src: 'https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png', alt: '' })
 					),
 					React.createElement(
-						"button",
-						{ className: "navbar-toggler", type: "button", "data-toggle": "collapse", "data-target": "#navbarNav", "aria-controls": "navbarNav", "aria-expanded": "false", "aria-label": "Toggle navigation" },
-						React.createElement("span", { className: "navbar-toggler-icon" })
+						'button',
+						{ className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNav', 'aria-controls': 'navbarNav', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
+						React.createElement('span', { className: 'navbar-toggler-icon' })
 					),
 					React.createElement(
-						"div",
-						{ className: "collapse navbar-collapse", id: "navbarNav" },
+						'div',
+						{ className: 'collapse navbar-collapse', id: 'navbarNav' },
 						React.createElement(
-							"ul",
-							{ className: "navbar-nav d-flex justify-content-end" },
+							'ul',
+							{ className: 'navbar-nav d-flex justify-content-end' },
 							sections.map(function (section, index) {
+								var sectionName = section.title.toLocaleUpperCase();
 								if (index == 0) {
 									return React.createElement(
-										"li",
-										{ className: "nav-item active", key: section.id },
+										'li',
+										{ className: 'nav-item active', key: section.id },
 										React.createElement(
-											"a",
-											{ className: "nav-link", href: "#" + section.id },
-											section.title,
+											'a',
+											{ className: 'nav-link', href: '#' + section.id },
+											sectionName,
 											React.createElement(
-												"span",
-												{ className: "sr-only" },
-												"(current)"
+												'span',
+												{ className: 'sr-only' },
+												'(current)'
 											)
 										)
 									);
 								} else if (section.id !== 'footer') {
 									return React.createElement(
-										"li",
-										{ className: "nav-item", key: section.id },
+										'li',
+										{ className: 'nav-item', key: section.id },
 										React.createElement(
-											"a",
-											{ className: "nav-link", href: "#" + section.id },
-											section.title
+											'a',
+											{ className: 'nav-link', href: '#' + section.id },
+											sectionName
 										)
 									);
 								}
@@ -194,8 +216,8 @@ var Home = function (_React$Component) {
 								key: section.id,
 								section: section.id,
 								amenitiesData: amenitiesData,
-								imageCss: "amenityIcon",
-								containerCss: "verticallyMiddle" });
+								imageCss: 'amenityIcon',
+								containerCss: 'verticallyMiddle' });
 							break;
 
 						case 'virtualTour':
@@ -244,18 +266,18 @@ var Home = function (_React$Component) {
 				}),
 				React.createElement(
 					ModalContainer,
-					null,
+					{ id: 'enquiryFormId' },
 					React.createElement(EnquiryForm, null)
 				),
 				React.createElement(
-					"div",
-					{ id: "feedback-form", className: "feedback-form", onClick: function onClick() {
-							return $('#exampleModal').modal('show');
+					'div',
+					{ id: 'feedback-form', className: 'feedback-form', onClick: function onClick() {
+							return $('#enquiryFormId').modal('show');
 						} },
 					React.createElement(
-						"a",
-						{ href: "#", className: "feedback-form-btn btn  btn-lg", id: "OpenFormMob" },
-						"ENQUIRE NOW"
+						'a',
+						{ href: '#', className: 'feedback-form-btn btn  btn-lg', id: 'OpenFormMob' },
+						'ENQUIRE NOW'
 					)
 				)
 			);
@@ -280,9 +302,9 @@ var SlideShow = function (_React$Component2) {
 			var imageIndex = _this2.state.slideIndex;
 
 			imgArray.forEach(function (image, index) {
-				if (_this2["imageRef" + index] !== undefined) {
-					if (_this2["imageRef" + index].current !== null) {
-						_this2["imageRef" + index].current.style.display = "none";
+				if (_this2['imageRef' + index] !== undefined) {
+					if (_this2['imageRef' + index].current !== null) {
+						_this2['imageRef' + index].current.style.display = "none";
 					}
 				}
 			});
@@ -292,17 +314,17 @@ var SlideShow = function (_React$Component2) {
 				imageIndex = 1;
 			}
 			imgArray.forEach(function (image, index) {
-				if (_this2["dotRef" + index].current !== null) {
-					_this2["dotRef" + index].current.className = _this2["dotRef" + index].current.className.replace(" active", "");
+				if (_this2['dotRef' + index].current !== null) {
+					_this2['dotRef' + index].current.className = _this2['dotRef' + index].current.className.replace(" active", "");
 				}
 			});
 
-			if (_this2["imageRef" + (imageIndex - 1)].current !== null) {
-				_this2["imageRef" + (imageIndex - 1)].current.style.display = "block";
+			if (_this2['imageRef' + (imageIndex - 1)].current !== null) {
+				_this2['imageRef' + (imageIndex - 1)].current.style.display = "block";
 			}
 
-			if (_this2["dotRef" + (imageIndex - 1)].current) {
-				_this2["dotRef" + (imageIndex - 1)].current.className += " active";
+			if (_this2['dotRef' + (imageIndex - 1)].current) {
+				_this2['dotRef' + (imageIndex - 1)].current.className += " active";
 			}
 
 			_this2.setState({ slideIndex: imageIndex });
@@ -313,14 +335,14 @@ var SlideShow = function (_React$Component2) {
 		};
 
 		for (var index = 0; index < props.imgArray.length; index++) {
-			_this2["imageRef" + index] = React.createRef();
-			_this2["dotRef" + index] = React.createRef();
+			_this2['imageRef' + index] = React.createRef();
+			_this2['dotRef' + index] = React.createRef();
 		}
 		return _this2;
 	}
 
 	_createClass(SlideShow, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this3 = this;
 
@@ -329,12 +351,12 @@ var SlideShow = function (_React$Component2) {
 			}, 8000);
 		}
 	}, {
-		key: "componentWillUnmount",
+		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
 			clearInterval(this.timerID);
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _this4 = this;
 
@@ -344,33 +366,33 @@ var SlideShow = function (_React$Component2) {
 			    cssClass = _props.cssClass;
 
 			return React.createElement(
-				"div",
+				'div',
 				{ id: section },
 				React.createElement(
-					"div",
-					{ className: "slideshow-container" },
+					'div',
+					{ className: 'slideshow-container' },
 					imgArray.map(function (image, index) {
 						return React.createElement(
-							"div",
+							'div',
 							{
-								className: "mySlides fadeImg " + cssClass,
-								ref: _this4["imageRef" + index],
+								className: 'mySlides fadeImg ' + cssClass,
+								ref: _this4['imageRef' + index],
 								key: index
 							},
-							React.createElement("img", {
+							React.createElement('img', {
 								src: image,
 								style: { width: "inherit", height: "inherit" }
 							})
 						);
 					})
 				),
-				React.createElement("br", null),
+				React.createElement('br', null),
 				React.createElement(
-					"div",
+					'div',
 					{ style: { textAlign: "center" } },
 					imgArray.map(function (image, index) {
-						return React.createElement("span", {
-							className: "dot",
+						return React.createElement('span', {
+							className: 'dot',
 							ref: _this4["dotRef" + index],
 							key: index
 						});
@@ -396,7 +418,7 @@ var AboutUs = function (_React$Component3) {
 	}
 
 	_createClass(AboutUs, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _props$aboutUsData = this.props.aboutUsData,
 			    id = _props$aboutUsData.id,
@@ -406,40 +428,35 @@ var AboutUs = function (_React$Component3) {
 			    brochureLink = _props$aboutUsData.brochureLink;
 
 			return React.createElement(
-				"div",
+				'div',
 				{ id: this.props.section },
 				React.createElement(
-					"h4",
-					{ className: "sectionTitle" },
-					"About Us"
-				),
-				React.createElement(
-					"div",
-					{ className: "row" },
+					'div',
+					{ className: 'row' },
 					React.createElement(
-						"div",
-						{ className: "col-md-6 col-xs-12" },
-						React.createElement("img", { src: image, style: { width: "inherit", height: "inherit" } })
+						'div',
+						{ className: 'col-md-6 col-xs-12 subSection' },
+						React.createElement('img', { src: image, style: { width: "inherit", height: "inherit" } })
 					),
 					React.createElement(
-						"div",
-						{ className: "col-md-6 col-xs-12 " + this.props.cssClass },
+						'div',
+						{ className: 'col-md-6 col-xs-12 subSection aboutDescription ' + this.props.cssClass },
 						React.createElement(
-							"h3",
-							null,
-							title
+							'h2',
+							{ className: 'description' },
+							title.toLocaleUpperCase()
 						),
 						React.createElement(
-							"div",
-							null,
+							'div',
+							{ className: 'description' },
 							description
 						),
 						React.createElement(
-							"button",
-							{ className: "btn", onClick: function onClick(e) {
+							'button',
+							{ className: 'btn themeColor brochure description', onClick: function onClick(e) {
 									return window.open(brochureLink);
 								} },
-							"Download Brochure"
+							'DOWNLOAD BROCHURE'
 						)
 					)
 				)
@@ -458,12 +475,20 @@ var Amenities = function (_React$Component4) {
 
 		var _this6 = _possibleConstructorReturn(this, (Amenities.__proto__ || Object.getPrototypeOf(Amenities)).call(this, props));
 
+		_this6.changeBackground = function (e) {
+			e.target.style.background = 'black';
+		};
+
+		_this6.revertBackground = function (e) {
+			e.target.style.background = 'none';
+		};
+
 		console.log("came in amenities constructor ", props);
 		return _this6;
 	}
 
 	_createClass(Amenities, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _this7 = this;
 
@@ -474,43 +499,49 @@ var Amenities = function (_React$Component4) {
 			    images = _props$amenitiesData.images;
 
 			return React.createElement(
-				"div",
-				{ id: this.props.section, className: "amenityContainer" },
+				'div',
+				{ className: 'sectionTextColor' },
 				React.createElement(
-					"h4",
-					{ className: "sectionTitle" },
-					title
-				),
-				React.createElement(
-					"div",
-					{ className: "row", style: { padding: "30px" } },
-					list.map(function (amenityObj, index) {
-						return React.createElement(
-							"div",
-							{ className: "col-md-2 col-sm-4 col-xs-6 " + _this7.props.containerCss + " amenityIconContainr",
-								style: { textAlign: "center" },
-								key: index },
-							React.createElement("img", { className: _this7.props.imageCss, src: amenityObj.icon }),
-							React.createElement(
-								"div",
-								{ className: "amenityTitle" },
-								amenityObj.title
-							)
-						);
-					})
+					'div',
+					{ id: this.props.section, className: 'amenityContainer' },
+					React.createElement(
+						'h2',
+						{ className: 'sectionTitle' },
+						title
+					),
+					React.createElement(
+						'div',
+						{ className: 'row sectionContent' },
+						list.map(function (amenityObj, index) {
+							return React.createElement(
+								'div',
+								{ className: 'col-md-2 col-sm-4 col-xs-6 ' + _this7.props.containerCss + ' amenityIconContainr',
+									style: { textAlign: "center" },
+									key: 'amenityIcon_' + index,
+									onMouseOver: _this7.changeBackground,
+									onMouseOut: _this7.revertBackground },
+								React.createElement('img', { className: _this7.props.imageCss, src: amenityObj.icon }),
+								React.createElement(
+									'div',
+									{ className: 'amenityTitle' },
+									amenityObj.title
+								)
+							);
+						})
+					)
 				),
 				React.createElement(
 					Carousel,
-					{ sectionId: id, list: images },
+					{ sectionId: id + '_carousel', list: images, containerCss: '' },
 					React.createElement(
-						"h5",
+						'h5',
 						null,
-						"..."
+						'...'
 					),
 					React.createElement(
-						"p",
+						'p',
 						null,
-						"..."
+						'...'
 					)
 				)
 			);
@@ -533,7 +564,7 @@ var VirtualTour = function (_React$Component5) {
 	}
 
 	_createClass(VirtualTour, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _props$virtualTourDat = this.props.virtualTourData,
 			    id = _props$virtualTourDat.id,
@@ -541,14 +572,14 @@ var VirtualTour = function (_React$Component5) {
 			    list = _props$virtualTourDat.list;
 
 			return React.createElement(
-				"div",
-				{ id: this.props.section, className: "amenityContainer" },
+				'div',
+				{ id: this.props.section, className: 'amenityContainer' },
 				React.createElement(
-					"h4",
-					{ className: "sectionTitle" },
+					'h2',
+					{ className: 'sectionTextColor sectionTitle' },
 					title
 				),
-				React.createElement(Carousel, { sectionId: id, list: list })
+				React.createElement(Carousel, { sectionId: id, list: list, containerCss: 'sectionContent' })
 			);
 		}
 	}]);
@@ -569,24 +600,24 @@ var Gallery = function (_React$Component6) {
 	}
 
 	_createClass(Gallery, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var images = this.props.galleryData.images;
 
 			return React.createElement(
-				"div",
+				'div',
 				{ id: this.props.section },
 				React.createElement(
-					"div",
-					{ className: "row" },
+					'div',
+					{ className: 'row' },
 					images.map(function (image, index) {
 						return React.createElement(
-							"div",
-							{ className: "col-md-3 col-xs-6 col-xs-12 galleryImgDiv", key: index },
-							React.createElement("img", { src: image })
+							'div',
+							{ className: 'col-md-3 col-xs-6 col-xs-12 galleryImgDiv', key: index },
+							React.createElement('img', { src: image })
 						);
 					})
 				)
@@ -610,10 +641,10 @@ var FloorPlan = function (_React$Component7) {
 	}
 
 	_createClass(FloorPlan, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _props$floorPlanData = this.props.floorPlanData,
 			    id = _props$floorPlanData.id,
@@ -621,14 +652,14 @@ var FloorPlan = function (_React$Component7) {
 			    images = _props$floorPlanData.images;
 
 			return React.createElement(
-				"div",
-				{ id: this.props.section, className: "amenityContainer" },
+				'div',
+				{ id: this.props.section, className: 'amenityContainer' },
 				React.createElement(
-					"h4",
-					{ className: "sectionTitle" },
+					'h2',
+					{ className: 'sectionTextColor sectionTitle' },
 					title
 				),
-				React.createElement(Carousel, { sectionId: id, list: images })
+				React.createElement(Carousel, { sectionId: id, list: images, containerCss: 'sectionContent' })
 			);
 		}
 	}]);
@@ -654,7 +685,7 @@ var ContactUs = function (_React$Component8) {
 	}
 
 	_createClass(ContactUs, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _props$contactUsData = this.props.contactUsData,
 			    id = _props$contactUsData.id,
@@ -663,125 +694,125 @@ var ContactUs = function (_React$Component8) {
 
 			var brokerData = this.props.brokerData;
 			return React.createElement(
-				"div",
-				{ id: this.props.section, className: "row contactUs" },
+				'div',
+				{ id: this.props.section, className: 'row contactUs' },
 				React.createElement(
-					"div",
-					{ className: "col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+					'div',
+					{ className: 'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12' },
 					React.createElement(EnquiryForm, null)
 				),
 				React.createElement(
-					"div",
-					{ className: "col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 brokerDetails" },
+					'div',
+					{ className: 'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 brokerDetails' },
 					React.createElement(
-						"div",
-						{ className: "verticallyMiddle" },
+						'div',
+						{ className: 'verticallyMiddle' },
 						React.createElement(
-							"p",
+							'p',
 							null,
-							"[ OUR CONTACT DETAILS ]"
+							'[ OUR CONTACT DETAILS ]'
 						),
 						React.createElement(
-							"h4",
+							'h4',
 							null,
 							brokerData.fullName
 						),
 						React.createElement(
-							"p",
+							'p',
 							null,
-							"An authorized channel partner of "
+							'An authorized channel partner of '
 						),
 						React.createElement(
-							"div",
-							{ className: "row" },
+							'div',
+							{ className: 'row' },
 							React.createElement(
-								"div",
-								{ className: "col-2" },
-								React.createElement("img", { src: "./assets/images/place.png" })
+								'div',
+								{ className: 'col-2' },
+								React.createElement('img', { src: './assets/images/place.png' })
 							),
 							React.createElement(
-								"div",
-								{ className: "col-10" },
+								'div',
+								{ className: 'col-10' },
 								React.createElement(
-									"div",
-									{ className: "brokerDetailsTitle" },
-									"OUR ADDRESS"
+									'div',
+									{ className: 'brokerDetailsTitle' },
+									'OUR ADDRESS'
 								),
 								React.createElement(
-									"p",
+									'p',
 									null,
 									brokerData.address
 								)
 							)
 						),
 						React.createElement(
-							"div",
-							{ className: "row" },
+							'div',
+							{ className: 'row' },
 							React.createElement(
-								"div",
-								{ className: "col-2" },
-								React.createElement("img", { src: "./assets/images/mail.png" })
+								'div',
+								{ className: 'col-2' },
+								React.createElement('img', { src: './assets/images/mail.png' })
 							),
 							React.createElement(
-								"div",
-								{ className: "col-10" },
+								'div',
+								{ className: 'col-10' },
 								React.createElement(
-									"div",
-									{ className: "brokerDetailsTitle" },
-									"EMAIL ADDRESS"
+									'div',
+									{ className: 'brokerDetailsTitle' },
+									'EMAIL ADDRESS'
 								),
 								React.createElement(
-									"p",
+									'p',
 									null,
 									brokerData.emailId,
-									React.createElement("br", null),
+									React.createElement('br', null),
 									brokerData.alternateEmailId ? brokerData.alternateEmailId : ''
 								)
 							)
 						),
 						React.createElement(
-							"div",
-							{ className: "row" },
+							'div',
+							{ className: 'row' },
 							React.createElement(
-								"div",
-								{ className: "col-2" },
-								React.createElement("img", { src: "./assets/images/phone.png" })
+								'div',
+								{ className: 'col-2' },
+								React.createElement('img', { src: './assets/images/phone.png' })
 							),
 							React.createElement(
-								"div",
-								{ className: "col-10" },
+								'div',
+								{ className: 'col-10' },
 								React.createElement(
-									"div",
-									{ className: "brokerDetailsTitle" },
-									"OUR PHONE"
+									'div',
+									{ className: 'brokerDetailsTitle' },
+									'OUR PHONE'
 								),
 								React.createElement(
-									"p",
+									'p',
 									null,
 									brokerData.mobileNumber,
-									React.createElement("br", null),
+									React.createElement('br', null),
 									brokerData.alternateMobileNo ? brokerData.alternateMobileNo : ''
 								)
 							)
 						),
 						React.createElement(
-							"div",
-							{ className: "row" },
+							'div',
+							{ className: 'row' },
 							React.createElement(
-								"div",
-								{ className: "col-2" },
-								React.createElement("img", { src: "./assets/images/document.png" })
+								'div',
+								{ className: 'col-2' },
+								React.createElement('img', { src: './assets/images/document.png' })
 							),
 							React.createElement(
-								"div",
-								{ className: "col-10" },
+								'div',
+								{ className: 'col-10' },
 								React.createElement(
-									"div",
-									{ className: "brokerDetailsTitle" },
-									"RERA NUMBER"
+									'div',
+									{ className: 'brokerDetailsTitle' },
+									'RERA NUMBER'
 								),
 								React.createElement(
-									"p",
+									'p',
 									null,
 									brokerData.reraNumber
 								)
@@ -790,12 +821,12 @@ var ContactUs = function (_React$Component8) {
 					)
 				),
 				React.createElement(
-					"div",
-					{ className: "col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-					React.createElement("iframe", {
+					'div',
+					{ className: 'col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12' },
+					React.createElement('iframe', {
 						src: mapLink,
-						className: "mapLocation",
-						title: "Our location on google map" })
+						className: 'fullSize',
+						title: 'Our location on google map' })
 				)
 			);
 		}
@@ -817,42 +848,43 @@ var Carousel = function (_React$Component9) {
 	}
 
 	_createClass(Carousel, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {
-			$("#" + this.props.sectionId).carousel();
+			$('#' + this.props.sectionId).carousel();
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _props2 = this.props,
 			    sectionId = _props2.sectionId,
-			    list = _props2.list;
+			    list = _props2.list,
+			    containerCss = _props2.containerCss;
 
 			return React.createElement(
-				"div",
-				{ id: sectionId, className: "carousel slide", "data-ride": "carousel" },
+				'div',
+				{ id: sectionId, className: 'carousel slide ' + containerCss, 'data-ride': 'carousel' },
 				list.map(function (item, index) {
 					return React.createElement(
-						"ol",
-						{ className: "carousel-indicators", key: index },
-						React.createElement("li", {
-							"data-target": "#carouselExampleIndicators",
-							"data-slide-to": index,
-							className: "active"
+						'ol',
+						{ className: 'carousel-indicators', key: index },
+						React.createElement('li', {
+							'data-target': '#carouselExampleIndicators',
+							'data-slide-to': index,
+							className: 'active'
 						}),
-						React.createElement("li", {
-							"data-target": "#carouselExampleIndicators",
-							"data-slide-to": index
+						React.createElement('li', {
+							'data-target': '#carouselExampleIndicators',
+							'data-slide-to': index
 						}),
-						React.createElement("li", {
-							"data-target": "#carouselExampleIndicators",
-							"data-slide-to": index
+						React.createElement('li', {
+							'data-target': '#carouselExampleIndicators',
+							'data-slide-to': index
 						})
 					);
 				}),
 				React.createElement(
-					"div",
-					{ className: "carousel-inner" },
+					'div',
+					{ className: 'carousel-inner' },
 					list.map(function (item, index) {
 						var source = "";
 						var snippet = "";
@@ -861,72 +893,66 @@ var Carousel = function (_React$Component9) {
 						} else if (sectionId == "virtualTour") {
 							source = item.tourImageLink;
 							snippet = React.createElement(
-								"div",
-								null,
-								React.createElement("h4", null),
+								'div',
+								{ className: 'centered' },
+								React.createElement('h4', null),
 								React.createElement(
-									"button",
+									'button',
 									{
-										className: "btn",
+										className: 'btn tourBtn',
 										onClick: function onClick(e) {
-											return window.location.href = "" + item.tourLink;
+											return window.location.href = '' + item.tourLink;
 										}
 									},
-									"Enter Virtual Tour"
+									'Enter Virtual Tour'
 								)
 							);
 						}
 
 						// const src = typeof(item) == 'string' ? item : ;
 						return React.createElement(
-							"div",
-							{
-								className: "carousel-item " + (index == 0 ? "active" : ""),
-								key: index
-							},
-							React.createElement("img", { className: "d-block w-100", src: source, alt: "First slide" }),
+							'div',
+							{ className: 'carousel-item ' + (index == 0 ? "active" : ""),
+								key: index },
+							React.createElement('img', { className: 'd-block w-100 carouselHeight', src: source, alt: 'First slide' }),
 							React.createElement(
-								"div",
-								{ className: "carousel-caption d-none d-md-block" },
+								'div',
+								{ className: 'centered d-none d-md-block' },
 								snippet
 							)
 						);
 					})
 				),
 				React.createElement(
-					"a",
-					{
-						className: "carousel-control-prev",
-						href: "#carouselExampleIndicators",
-						role: "button",
-						"data-slide": "prev"
-					},
-					React.createElement("span", {
-						className: "carousel-control-prev-icon",
-						"aria-hidden": "true"
-					}),
+					'a',
+					{ className: 'carousel-control-prev',
+						href: '#carouselExampleIndicators',
+						role: 'button',
+						'data-slide': 'prev' },
+					React.createElement('span', { className: 'carousel-control-prev-icon',
+						'aria-hidden': 'true' }),
 					React.createElement(
-						"span",
-						{ className: "sr-only" },
-						"Previous"
+						'span',
+						{ className: 'sr-only' },
+						'Previous'
 					)
 				),
 				React.createElement(
-					"a",
+					'a',
 					{
-						className: "carousel-control-next",
-						href: "#carouselExampleIndicators",
-						role: "button",
-						"data-slide": "next"
+						className: 'carousel-control-next',
+						href: '#carouselExampleIndicators',
+						role: 'button',
+						'data-slide': 'next'
 					},
-					React.createElement("span", {
-						className: "carousel-control-next-icon",
-						"aria-hidden": "true"
+					React.createElement('span', {
+						className: 'carousel-control-next-icon',
+						'aria-hidden': 'true'
 					}),
 					React.createElement(
-						"span",
-						{ className: "sr-only" },
-						"Next"
+						'span',
+						{ className: 'sr-only' },
+						'Next'
 					)
 				)
 			);
@@ -949,28 +975,61 @@ var Footer = function (_React$Component10) {
 	}
 
 	_createClass(Footer, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var _props$footerData = this.props.footerData,
 			    description = _props$footerData.description,
 			    disclaimer = _props$footerData.disclaimer;
 
 			return React.createElement(
-				"div",
+				'div',
 				null,
 				React.createElement(
-					"div",
-					{ className: "row footer" },
-					description,
-					React.createElement("br", null),
-					React.createElement("br", null),
+					'div',
+					{ className: 'row footer' },
 					React.createElement(
-						"div",
+						'strong',
 						null,
-						"Disclaimer"
+						description,
+						React.createElement('br', null),
+						React.createElement('br', null),
+						React.createElement(
+							ModalContainer,
+							{ id: 'disclaimerId' },
+							React.createElement(
+								'div',
+								{ className: 'modal-header', style: { padding: '0px' } },
+								React.createElement(
+									'h5',
+									{ className: 'modal-title title', id: 'exampleModalCenterTitle' },
+									'Disclaimer'
+								),
+								React.createElement(
+									'button',
+									{ type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+									React.createElement(
+										'span',
+										{ 'aria-hidden': 'true' },
+										'\xD7'
+									)
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'disclaimer' },
+								disclaimer
+							)
+						),
+						React.createElement(
+							'div',
+							{ onClick: function onClick() {
+									return $('#disclaimerId').modal('show');
+								} },
+							'Disclaimer'
+						)
 					)
 				)
 			);
@@ -993,30 +1052,30 @@ var ModalContainer = function (_React$Component11) {
 	}
 
 	_createClass(ModalContainer, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {
 			console.log(this.modalRef.current);
 			// this.modalRef.current.modal('show') // not working by ref
-			$('#exampleModal').modal('show');
+			if (this.props.id == 'enquiryFormId') $('#' + this.props.id).modal('show');
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return React.createElement(
-				"div",
+				'div',
 				null,
 				React.createElement(
-					"div",
-					{ className: "modal fade", ref: this.modalRef, id: "exampleModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true" },
+					'div',
+					{ className: 'modal fade', ref: this.modalRef, id: this.props.id, tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true' },
 					React.createElement(
-						"div",
-						{ className: "modal-dialog", role: "document" },
+						'div',
+						{ className: 'modal-dialog', role: 'document' },
 						React.createElement(
-							"div",
-							{ className: "modal-content" },
+							'div',
+							{ className: 'modal-content' },
 							React.createElement(
-								"div",
-								{ className: "modal-body" },
+								'div',
+								{ className: 'modal-body' },
 								this.props.children
 							)
 						)
@@ -1055,94 +1114,111 @@ var EnquiryForm = function (_React$Component12) {
 	}
 
 	_createClass(EnquiryForm, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return React.createElement(
 				React.Fragment,
 				null,
 				React.createElement(
-					"div",
-					{ className: "col-12" },
+					'div',
+					{ className: 'col-12' },
 					React.createElement(
-						"h4",
-						null,
-						"Get In Touch"
+						'div',
+						{ style: { display: 'flex', position: 'relative' } },
+						React.createElement(
+							'h4',
+							null,
+							'Get In Touch'
+						),
+						React.createElement(
+							'button',
+							{ type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', style: { right: '0px', position: 'absolute' } },
+							React.createElement(
+								'span',
+								{ 'aria-hidden': 'true' },
+								'\xD7'
+							)
+						)
 					),
 					React.createElement(
-						"div",
+						'div',
 						{ style: { marginBottom: '14px' } },
-						"Please fill in your details below and we will get in touch with you shorlty"
+						'Please fill in your details below and we will get in touch with you shorlty'
 					)
 				),
 				React.createElement(
-					"form",
+					'form',
 					null,
 					React.createElement(
-						"div",
-						{ className: "row" },
+						'div',
+						{ className: 'row' },
 						React.createElement(
-							"div",
-							{ className: "col-12" },
+							'div',
+							{ className: 'col-12' },
 							React.createElement(
-								"label",
-								{ htmlFor: "name", className: "col-form-label" },
-								"Name"
+								'label',
+								{ htmlFor: 'name', className: 'col-form-label' },
+								'Name'
 							),
-							React.createElement("input", {
-								type: "text",
-								name: "name",
-								id: "name",
-								className: "form-control",
+							React.createElement('input', {
+								type: 'text',
+								name: 'name',
+								id: 'name',
+								className: 'form-control',
 								value: this.state.name,
 								onChange: this.onChangeHandler,
 								required: true })
 						),
 						React.createElement(
-							"div",
-							{ className: "col-12" },
+							'div',
+							{ className: 'col-12' },
 							React.createElement(
-								"label",
-								{ htmlFor: "email" },
-								"Email"
+								'label',
+								{ htmlFor: 'email' },
+								'Email'
 							),
-							React.createElement("input", {
-								type: "email",
-								name: "email",
-								id: "email",
-								className: "form-control",
+							React.createElement('input', {
+								type: 'email',
+								name: 'email',
+								id: 'email',
+								className: 'form-control',
 								value: this.state.email,
 								pattern: this.state.regex,
 								onChange: this.onChangeHandler,
 								required: true })
 						),
 						React.createElement(
-							"div",
-							{ className: "col-12" },
+							'div',
+							{ className: 'col-12' },
 							React.createElement(
-								"label",
-								{ htmlFor: "phoneNo" },
-								"Phone Number"
+								'label',
+								{ htmlFor: 'phoneNo' },
+								'Phone Number'
 							),
-							React.createElement("input", {
-								type: "tel",
-								name: "phoneNo",
-								id: "phoneNo",
-								className: "form-control",
+							React.createElement('input', {
+								type: 'tel',
+								name: 'phoneNo',
+								id: 'phoneNo',
+								className: 'form-control',
 								value: this.state.phoneNo,
-								pattern: "[0-9]{10}",
+								pattern: '[0-9]{10}',
 								onChange: this.onChangeHandler,
 								required: true })
 						),
 						React.createElement(
-							"p",
-							{ className: "col-12 tncLabel" },
-							"By submitting above details, you are authorizing Rajshree Builders and its associate/partner companies to call you and send transcational/promotional communicatin even though you may be registered under DNC."
+							'p',
+							{ className: 'col-12 tncLabel' },
+							'By submitting above details, you are authorizing Rajshree Builders and its associate/partner companies to call you and send transcational/promotional communicatin even though you may be registered under DNC.'
 						)
 					),
 					React.createElement(
-						"button",
-						{ className: "btn", onClick: this.onSubmitEquiryForm },
-						"Submit"
+						'div',
+						{ className: 'row', style: { justifyContent: 'center' } },
+						React.createElement(
+							'button',
+							{ className: 'btn themeColor', onClick: this.onSubmitEquiryForm },
+							'Submit'
+						)
 					)
 				)
 			);

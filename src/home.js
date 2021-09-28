@@ -10,6 +10,22 @@ class Home extends React.Component {
 
 	}
 
+	componentDidMount(){
+		// var settings = {
+		// 	themeColor : '#0A0A0A'
+		// }
+		this.setStyleOfWholeBody({});
+	}
+
+	// Set font family of our choice for whole body
+	setStyleOfWholeBody = (settings) => {
+		var r = document.querySelector(':root');
+		if(settings.fontFamily) r.style.setProperty('--fontFamily', settings.fontFamily);
+		if(settings.lineHeight) r.style.setProperty('--lineHeight', settings.lineHeight);
+		if(settings.themeColor) r.style.setProperty('--themeColor', settings.themeColor);
+		if(settings.fontColor) r.style.setProperty('--fontColor', settings.fontColor);
+	}
+
 	render() {
 		
 		const bannerData = {
@@ -145,124 +161,125 @@ class Home extends React.Component {
 		};
 
 		const sections = [
-			bannerData, aboutUsData, amenitiesData, virtualTourData, floorPlanData, galleryData, contactUsData, footerData
+			bannerData, aboutUsData, amenitiesData, virtualTourData, galleryData, floorPlanData, contactUsData, footerData
 		]
 		
 		return (
 		<div>
-				<nav className="navbar fixed-top navbar-expand-sm navbar-light header ">
-					<a className="navbar-brand" href="#">
-						<img 
-							className="logo"
-							src="https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png" alt="" />
-					</a>
-					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon"></span>
-					</button>
-					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="navbar-nav d-flex justify-content-end">
-							{
-								sections.map((section, index) => {
-									if(index == 0){
-										return <li className="nav-item active" key={section.id}>
-													<a className="nav-link" href={`#${section.id}`}>{section.title}
-														<span className={`sr-only`}>(current)</span>
-													</a>
-												</li>
-									} else if(section.id !== 'footer'){
-										return <li className="nav-item" key={section.id}>
-													<a className="nav-link" href={`#${section.id}`}>{section.title}</a>
-												</li>
-									}
-								})
-							}
-						</ul>
-					</div>
-				</nav>
-				{
-					sections.map((section) => {
-							switch (section.id) {
-								case 'banner':
-									return <SlideShow 
-												key={section.id} 
-												section={section.id}
-												imgArray={bannerData.images} 
-												cssClass={"bannerContainer"}>
-											</SlideShow>
-									break;
-
-								case 'about':
-									return <AboutUs 
-												key={section.id}
-												section={section.id} 
-												aboutUsData={aboutUsData} 
-												cssClass={"verticallyMiddle"}>
-											</AboutUs>
-									break;
-
-								case 'amenities':
-									return <Amenities 
-												key={section.id}
-												section={section.id} 
-												amenitiesData={amenitiesData} 
-												imageCss="amenityIcon" 
-												containerCss="verticallyMiddle">
-											</Amenities>
-									break;
-
-								case 'virtualTour':
-									return <VirtualTour
-												key={section.id}
-												section={section.id}
-												virtualTourData={virtualTourData}>
-											</VirtualTour>
-									break;
-
-								case 'gallery':
-									return <Gallery 
-												key={section.id}
-												section={section.id} 
-												galleryData={galleryData}>
-											</Gallery>
-									break;
-							
-								case 'floorPlans':
-									return <FloorPlan
-												key={section.id}
-												section={section.id}
-												floorPlanData={floorPlanData}
-											></FloorPlan>
-									break;
-						
-								case 'contactUs':
-									return <ContactUs
-												key={section.id}
-												section={section.id}
-												contactUsData={contactUsData}
-												brokerData={brokerData}
-											></ContactUs>
-									break;
-						
-								case 'footer':
-									return <Footer
-												key={section.id}
-												section={section.id}
-												footerData={footerData}
-												cssClass={"verticallyMiddle"}
-											></Footer>
-									break;
-							
-								default:
-									break;
-							}
-					})
-				}
-				<ModalContainer>
-					<EnquiryForm></EnquiryForm>
-				</ModalContainer>
-				<div id="feedback-form" className="feedback-form" onClick={() => $('#exampleModal').modal('show')}>
-					<a href="#" className="feedback-form-btn btn  btn-lg" id="OpenFormMob">ENQUIRE NOW</a>
+			<nav className="navbar fixed-top navbar-expand-sm themeColor ">
+				<a className="navbar-brand" href="#">
+					<img 
+						className="logo"
+						src="https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png" alt="" />
+				</a>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div className="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav d-flex justify-content-end">
+						{
+							sections.map((section, index) => {
+								const sectionName = section.title.toLocaleUpperCase();
+								if(index == 0){
+									return <li className="nav-item active" key={section.id}>
+												<a className="nav-link" href={`#${section.id}`}>{sectionName}
+													<span className={`sr-only`}>(current)</span>
+												</a>
+											</li>
+								} else if(section.id !== 'footer'){
+									return <li className="nav-item" key={section.id}>
+												<a className="nav-link" href={`#${section.id}`}>{sectionName}</a>
+											</li>
+								}
+							})
+						}
+					</ul>
 				</div>
+			</nav>
+			{
+				sections.map((section) => {
+						switch (section.id) {
+							case 'banner':
+								return <SlideShow 
+											key={section.id} 
+											section={section.id}
+											imgArray={bannerData.images} 
+											cssClass={"bannerContainer"}>
+										</SlideShow>
+								break;
+
+							case 'about':
+								return <AboutUs 
+											key={section.id}
+											section={section.id} 
+											aboutUsData={aboutUsData} 
+											cssClass={"verticallyMiddle"}>
+										</AboutUs>
+								break;
+
+							case 'amenities':
+								return <Amenities 
+											key={section.id}
+											section={section.id} 
+											amenitiesData={amenitiesData} 
+											imageCss="amenityIcon" 
+											containerCss="verticallyMiddle">
+										</Amenities>
+								break;
+
+							case 'virtualTour':
+								return <VirtualTour
+											key={section.id}
+											section={section.id}
+											virtualTourData={virtualTourData}>
+										</VirtualTour>
+								break;
+
+							case 'gallery':
+								return <Gallery 
+											key={section.id}
+											section={section.id} 
+											galleryData={galleryData}>
+										</Gallery>
+								break;
+						
+							case 'floorPlans':
+								return <FloorPlan
+											key={section.id}
+											section={section.id}
+											floorPlanData={floorPlanData}
+										></FloorPlan>
+								break;
+					
+							case 'contactUs':
+								return <ContactUs
+											key={section.id}
+											section={section.id}
+											contactUsData={contactUsData}
+											brokerData={brokerData}
+										></ContactUs>
+								break;
+					
+							case 'footer':
+								return <Footer
+											key={section.id}
+											section={section.id}
+											footerData={footerData}
+											cssClass={"verticallyMiddle"}
+										></Footer>
+								break;
+						
+							default:
+								break;
+						}
+				})
+			}
+			<ModalContainer id="enquiryFormId">
+				<EnquiryForm></EnquiryForm>
+			</ModalContainer>
+			<div id="feedback-form" className="feedback-form" onClick={() => $(`#enquiryFormId`).modal('show')}>
+				<a href="#" className="feedback-form-btn btn  btn-lg" id="OpenFormMob">ENQUIRE NOW</a>
+			</div>
 		</div>
 		);
 	}
@@ -374,16 +391,15 @@ class AboutUs extends React.Component {
 		const { id, title, image, description, brochureLink } = this.props.aboutUsData;
 		return (
 			<div id={this.props.section}>
-				<h4 className="sectionTitle">About Us</h4>
 				<div className="row">
-					<div className="col-md-6 col-xs-12">
+					<div className="col-md-6 col-xs-12 subSection">
 						<img src={image} style={{ width: "inherit", height: "inherit" }} />
 					</div>
-					<div className={`col-md-6 col-xs-12 ${this.props.cssClass}`}>
-						<h3>{title}</h3>
-						<div>{description}</div>
-						<button className="btn" onClick={(e) => window.open(brochureLink)}>
-							Download Brochure
+					<div className={`col-md-6 col-xs-12 subSection aboutDescription ${this.props.cssClass}`}>
+						<h2 className="description">{title.toLocaleUpperCase()}</h2>
+						<div className="description">{description}</div>
+						<button className="btn themeColor brochure description" onClick={(e) => window.open(brochureLink)}>
+							DOWNLOAD BROCHURE
 						</button>
 					</div>
 				</div>
@@ -398,30 +414,43 @@ class Amenities extends React.Component {
 		console.log("came in amenities constructor ", props);
 	}
 
+	changeBackground = (e) => {
+		e.target.style.background = 'black';
+	}
+
+	revertBackground = (e) => {
+		e.target.style.background = 'none';
+	}
+
 	render() {
 		const { id, title, list, images } = this.props.amenitiesData;
 		return (
-			<div id={this.props.section} className="amenityContainer" >
-				<h4 className="sectionTitle">{title}</h4>
-				<div className="row" style={{ padding: "30px" }}>
-				{
-					list.map((amenityObj, index) => {
-						return (
-							<div className={`col-md-2 col-sm-4 col-xs-6 ${this.props.containerCss} amenityIconContainr`}
-								style={{ textAlign: "center" }}
-								key={index}>
-								<img className={this.props.imageCss} src={amenityObj.icon} />
-								<div className="amenityTitle">{amenityObj.title}</div>
-							</div>
-						);
-					})
-				}
+			<div className="sectionTextColor">
+				<div id={this.props.section} className="amenityContainer" >
+					<h2 className="sectionTitle">{title}</h2>
+					<div className="row sectionContent">
+						{
+							list.map((amenityObj, index) => {
+								return (
+									<div className={`col-md-2 col-sm-4 col-xs-6 ${this.props.containerCss} amenityIconContainr`}
+										style={{ textAlign: "center" }}
+										key={`amenityIcon_${index}`}
+										onMouseOver={this.changeBackground}
+										onMouseOut={this.revertBackground}>
+										<img className={this.props.imageCss} src={amenityObj.icon} />
+										<div className="amenityTitle">{amenityObj.title}</div>
+									</div>
+								);
+							})
+						}
+					</div>
 				</div>
-				<Carousel sectionId={id} list={images}>
+				<Carousel sectionId={`${id}_carousel`} list={images} containerCss="">
 					<h5>...</h5>
 					<p>...</p>
 				</Carousel>
 			</div>
+			
 		);
 	}
 }
@@ -436,8 +465,8 @@ class VirtualTour extends React.Component {
 		const { id, title, list } = this.props.virtualTourData;
 		return (
 			<div id={this.props.section} className="amenityContainer">
-				<h4 className="sectionTitle">{title}</h4>
-				<Carousel sectionId={id} list={list}></Carousel>
+				<h2 className="sectionTextColor sectionTitle">{title}</h2>
+				<Carousel sectionId={id} list={list} containerCss="sectionContent"></Carousel>
 			</div>
 		);
 	}
@@ -481,8 +510,8 @@ class FloorPlan extends React.Component {
 		const { id, title, images } = this.props.floorPlanData;
 		return (
 			<div id={this.props.section} className="amenityContainer">
-				<h4 className="sectionTitle">{title}</h4>
-				<Carousel sectionId={id} list={images}></Carousel>
+				<h2 className="sectionTextColor sectionTitle">{title}</h2>
+				<Carousel sectionId={id} list={images} containerCss="sectionContent"></Carousel>
 			</div>
 		);
 	}
@@ -552,7 +581,7 @@ class ContactUs extends React.Component {
 				<div className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<iframe 
 						src={mapLink} 
-						className="mapLocation"
+						className="fullSize"
 						title="Our location on google map">
 					</iframe>
 				</div>
@@ -577,9 +606,9 @@ class Carousel extends React.Component {
 	}
 
   render() {
-	const { sectionId, list } = this.props;
+	const { sectionId, list, containerCss} = this.props;
 	return (
-	  <div id={sectionId} className="carousel slide" data-ride="carousel">
+	  <div id={sectionId} className={`carousel slide ${containerCss}`} data-ride="carousel">
 		{list.map((item, index) => {
 		  return (
 			<ol className="carousel-indicators" key={index}>
@@ -608,10 +637,10 @@ class Carousel extends React.Component {
 			} else if (sectionId == "virtualTour") {
 			  source = item.tourImageLink;
 			  snippet = (
-				<div>
+				<div className="centered">
 				  <h4></h4>
 				  <button
-					className="btn"
+					className="btn tourBtn"
 					onClick={(e) => (window.location.href = `${item.tourLink}`)}
 				  >
 					Enter Virtual Tour
@@ -622,29 +651,24 @@ class Carousel extends React.Component {
 
 			// const src = typeof(item) == 'string' ? item : ;
 			return (
-			  <div
-				className={`carousel-item ${index == 0 ? "active" : ""}`}
-				key={index}
-			  >
-				<img className="d-block w-100" src={source} alt="First slide" />
-				<div className="carousel-caption d-none d-md-block">
-				  {snippet}
+				<div className={`carousel-item ${index == 0 ? "active" : ""}`}
+					key={index}>
+					<img className="d-block w-100 carouselHeight" src={source} alt="First slide" />
+					<div className="centered d-none d-md-block">
+				  		{snippet}
 				</div>
 			  </div>
 			);
 		  })}
 		</div>
-		<a
-		  className="carousel-control-prev"
-		  href="#carouselExampleIndicators"
-		  role="button"
-		  data-slide="prev"
-		>
-		  <span
-			className="carousel-control-prev-icon"
-			aria-hidden="true"
-		  ></span>
-		  <span className="sr-only">Previous</span>
+		<a 	className="carousel-control-prev"
+			href="#carouselExampleIndicators"
+			role="button"
+			data-slide="prev">
+				<span className="carousel-control-prev-icon"
+					aria-hidden="true">
+				</span>
+				<span className="sr-only">Previous</span>
 		</a>
 		<a
 		  className="carousel-control-next"
@@ -676,10 +700,23 @@ class Footer extends React.Component {
 		return (
 			<div>
 				<div className="row footer">
-					{description}
-					<br />
-					<br />
-					<div>Disclaimer</div>
+					<strong>
+						{description}
+						<br />
+						<br />
+						<ModalContainer id="disclaimerId">
+							<div className="modal-header" style={{padding: '0px'}}>
+								<h5 className="modal-title title" id="exampleModalCenterTitle">Disclaimer</h5>
+								<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div className="disclaimer">
+								{disclaimer}
+							</div>
+						</ModalContainer>
+						<div onClick={() => $('#disclaimerId').modal('show')}>Disclaimer</div>
+					</strong>
 				</div>
 			</div>
 		);
@@ -695,13 +732,13 @@ class ModalContainer extends React.Component {
 	componentDidMount(){
 		console.log(this.modalRef.current)
 		// this.modalRef.current.modal('show') // not working by ref
-		$('#exampleModal').modal('show')
+		if(this.props.id == 'enquiryFormId') $(`#${this.props.id}`).modal('show')
 	}
 
 	render(){
 		return (
 			<div>
-				<div className="modal fade" ref={this.modalRef} id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div className="modal fade" ref={this.modalRef} id={this.props.id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div className="modal-dialog" role="document">
 						<div className="modal-content">
 							<div className="modal-body">
@@ -738,7 +775,12 @@ class EnquiryForm extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="col-12">
-					<h4>Get In Touch</h4>
+					<div style={{display: 'flex', position: 'relative'}}>
+						<h4>Get In Touch</h4>
+						<button type="button" className="close" data-dismiss="modal" aria-label="Close" style={{right: '0px', position: 'absolute'}}>
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 					<div style={{marginBottom: '14px'}}>Please fill in your details below and we will get in touch with you shorlty</div>
 				</div>
 				<form>
@@ -782,8 +824,9 @@ class EnquiryForm extends React.Component {
 							By submitting above details, you are authorizing Rajshree Builders and its associate/partner companies to call you and send transcational/promotional communicatin even though you may be registered under DNC.
 						</p>	
 					</div>
-
-					<button className="btn" onClick={this.onSubmitEquiryForm}>Submit</button>
+					<div className="row" style={{justifyContent : 'center'}}>
+						<button className="btn themeColor" onClick={this.onSubmitEquiryForm}>Submit</button>
+					</div>
 				</form>
 			</React.Fragment>
 		)
