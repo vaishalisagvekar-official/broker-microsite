@@ -10,10 +10,6 @@ class Home extends React.Component {
 
 	}
 
-	componentDidMount(){
-		// this.props.refFor.current.modal('toggle')
-	}
-
 	render() {
 		
 		const bannerData = {
@@ -154,7 +150,7 @@ class Home extends React.Component {
 		
 		return (
 		<div>
-				<nav className="navbar fixed-top navbar-expand-lg navbar-light header ">
+				<nav className="navbar fixed-top navbar-expand-sm navbar-light header ">
 					<a className="navbar-brand" href="#">
 						<img 
 							className="logo"
@@ -264,6 +260,9 @@ class Home extends React.Component {
 				<ModalContainer>
 					<EnquiryForm></EnquiryForm>
 				</ModalContainer>
+				<div id="feedback-form" className="feedback-form" onClick={() => $('#exampleModal').modal('show')}>
+					<a href="#" className="feedback-form-btn btn  btn-lg" id="OpenFormMob">ENQUIRE NOW</a>
+				</div>
 		</div>
 		);
 	}
@@ -500,10 +499,10 @@ class ContactUs extends React.Component {
 		const brokerData = this.props.brokerData;
 		return (
 			<div id={this.props.section} className="row contactUs">
-				<div className="col-md-4 col-sm-6 col-xs-12">
+				<div className="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<EnquiryForm></EnquiryForm>
 				</div>
-				<div className="col-md-4 col-sm-6 col-xs-12 brokerDetails">
+				<div className="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 brokerDetails">
 					<div className="verticallyMiddle">
 						<p>[ OUR CONTACT DETAILS ]</p>
 						<h4>{brokerData.fullName}</h4>
@@ -550,7 +549,7 @@ class ContactUs extends React.Component {
 					</div>
 					</div>
 				</div>
-				<div className="col-md-4 col-sm-12 col-xs-12">
+				<div className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<iframe 
 						src={mapLink} 
 						className="mapLocation"

@@ -22,11 +22,6 @@ var Home = function (_React$Component) {
 	}
 
 	_createClass(Home, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {
-			// this.props.refFor.current.modal('toggle')
-		}
-	}, {
 		key: "render",
 		value: function render() {
 
@@ -126,7 +121,7 @@ var Home = function (_React$Component) {
 				null,
 				React.createElement(
 					"nav",
-					{ className: "navbar fixed-top navbar-expand-lg navbar-light header " },
+					{ className: "navbar fixed-top navbar-expand-sm navbar-light header " },
 					React.createElement(
 						"a",
 						{ className: "navbar-brand", href: "#" },
@@ -251,6 +246,17 @@ var Home = function (_React$Component) {
 					ModalContainer,
 					null,
 					React.createElement(EnquiryForm, null)
+				),
+				React.createElement(
+					"div",
+					{ id: "feedback-form", className: "feedback-form", onClick: function onClick() {
+							return $('#exampleModal').modal('show');
+						} },
+					React.createElement(
+						"a",
+						{ href: "#", className: "feedback-form-btn btn  btn-lg", id: "OpenFormMob" },
+						"ENQUIRE NOW"
+					)
 				)
 			);
 		}
@@ -661,12 +667,12 @@ var ContactUs = function (_React$Component8) {
 				{ id: this.props.section, className: "row contactUs" },
 				React.createElement(
 					"div",
-					{ className: "col-md-4 col-sm-6 col-xs-12" },
+					{ className: "col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12" },
 					React.createElement(EnquiryForm, null)
 				),
 				React.createElement(
 					"div",
-					{ className: "col-md-4 col-sm-6 col-xs-12 brokerDetails" },
+					{ className: "col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 brokerDetails" },
 					React.createElement(
 						"div",
 						{ className: "verticallyMiddle" },
@@ -785,7 +791,7 @@ var ContactUs = function (_React$Component8) {
 				),
 				React.createElement(
 					"div",
-					{ className: "col-md-4 col-sm-12 col-xs-12" },
+					{ className: "col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12" },
 					React.createElement("iframe", {
 						src: mapLink,
 						className: "mapLocation",
