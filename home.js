@@ -595,16 +595,23 @@ var Gallery = function (_React$Component6) {
 
 		var _this9 = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this, props));
 
+		_this9.openGallery = function (index) {
+			// this.setState({ selectedImgIndex : index})
+			// $(`#viewgalleryId`).modal('show');
+		};
+
 		console.log("came in gallery constructor ", props);
+		_this9.state = {
+			selectedImgIndex: -1
+		};
 		return _this9;
 	}
 
 	_createClass(Gallery, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {}
-	}, {
 		key: 'render',
 		value: function render() {
+			var _this10 = this;
+
 			var images = this.props.galleryData.images;
 
 			return React.createElement(
@@ -615,12 +622,23 @@ var Gallery = function (_React$Component6) {
 					{ className: 'row' },
 					images.map(function (image, index) {
 						return React.createElement(
-							'div',
-							{ className: 'col-md-3 col-xs-6 col-xs-12 galleryImgDiv', key: index },
-							React.createElement('img', { src: image })
+							React.Fragment,
+							null,
+							React.createElement(
+								'div',
+								{ className: 'col-md-3 col-xs-6 col-xs-12 galleryImgDiv', key: index, onClick: function onClick() {
+										return _this10.openGallery(index);
+									} },
+								React.createElement('img', { src: image })
+							)
 						);
 					})
-				)
+				),
+				this.state.selectedImgIndex !== -1 ? React.createElement(
+					ViewGallery,
+					{ id: 'viewgalleryId', img: this.state.selectedImgIndex, images: images },
+					'Hello there'
+				) : ''
 			);
 		}
 	}]);
@@ -634,10 +652,10 @@ var FloorPlan = function (_React$Component7) {
 	function FloorPlan(props) {
 		_classCallCheck(this, FloorPlan);
 
-		var _this10 = _possibleConstructorReturn(this, (FloorPlan.__proto__ || Object.getPrototypeOf(FloorPlan)).call(this, props));
+		var _this11 = _possibleConstructorReturn(this, (FloorPlan.__proto__ || Object.getPrototypeOf(FloorPlan)).call(this, props));
 
 		console.log("came in floor plan constructor ", props);
-		return _this10;
+		return _this11;
 	}
 
 	_createClass(FloorPlan, [{
@@ -673,15 +691,15 @@ var ContactUs = function (_React$Component8) {
 	function ContactUs(props) {
 		_classCallCheck(this, ContactUs);
 
-		var _this11 = _possibleConstructorReturn(this, (ContactUs.__proto__ || Object.getPrototypeOf(ContactUs)).call(this, props));
+		var _this12 = _possibleConstructorReturn(this, (ContactUs.__proto__ || Object.getPrototypeOf(ContactUs)).call(this, props));
 
-		_this11.onSubmitEquiryForm = function (e) {
+		_this12.onSubmitEquiryForm = function (e) {
 			e.preventDefault();
 			console.log("form submitted");
 		};
 
 		console.log("came in contact us constructor ", props);
-		return _this11;
+		return _this12;
 	}
 
 	_createClass(ContactUs, [{
@@ -841,10 +859,10 @@ var Carousel = function (_React$Component9) {
 	function Carousel(props) {
 		_classCallCheck(this, Carousel);
 
-		var _this12 = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
+		var _this13 = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
 
 		console.log("came in carousel constructor ", props);
-		return _this12;
+		return _this13;
 	}
 
 	_createClass(Carousel, [{
@@ -968,10 +986,10 @@ var Footer = function (_React$Component10) {
 	function Footer(props) {
 		_classCallCheck(this, Footer);
 
-		var _this13 = _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
+		var _this14 = _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
 
 		console.log("came in footer constructor ", props);
-		return _this13;
+		return _this14;
 	}
 
 	_createClass(Footer, [{
@@ -1045,10 +1063,10 @@ var ModalContainer = function (_React$Component11) {
 	function ModalContainer(props) {
 		_classCallCheck(this, ModalContainer);
 
-		var _this14 = _possibleConstructorReturn(this, (ModalContainer.__proto__ || Object.getPrototypeOf(ModalContainer)).call(this, props));
+		var _this15 = _possibleConstructorReturn(this, (ModalContainer.__proto__ || Object.getPrototypeOf(ModalContainer)).call(this, props));
 
-		_this14.modalRef = React.createRef();
-		return _this14;
+		_this15.modalRef = React.createRef();
+		return _this15;
 	}
 
 	_createClass(ModalContainer, [{
@@ -1094,23 +1112,23 @@ var EnquiryForm = function (_React$Component12) {
 	function EnquiryForm(props) {
 		_classCallCheck(this, EnquiryForm);
 
-		var _this15 = _possibleConstructorReturn(this, (EnquiryForm.__proto__ || Object.getPrototypeOf(EnquiryForm)).call(this, props));
+		var _this16 = _possibleConstructorReturn(this, (EnquiryForm.__proto__ || Object.getPrototypeOf(EnquiryForm)).call(this, props));
 
-		_this15.onChangeHandler = function (e) {
+		_this16.onChangeHandler = function (e) {
 			var inputData = {};
 			inputData[e.target.name] = e.target.value;
-			_this15.setState(inputData);
+			_this16.setState(inputData);
 		};
 
 		console.log("came in contact us constructor ", props);
-		_this15.state = {
+		_this16.state = {
 			name: '',
 			email: '',
 			phoneNo: '',
 			regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 		};
-		return _this15;
+		return _this16;
 	}
 
 	_createClass(EnquiryForm, [{
@@ -1226,6 +1244,128 @@ var EnquiryForm = function (_React$Component12) {
 	}]);
 
 	return EnquiryForm;
+}(React.Component);
+
+var ViewGallery = function (_React$Component13) {
+	_inherits(ViewGallery, _React$Component13);
+
+	function ViewGallery(props) {
+		_classCallCheck(this, ViewGallery);
+
+		var _this17 = _possibleConstructorReturn(this, (ViewGallery.__proto__ || Object.getPrototypeOf(ViewGallery)).call(this, props));
+
+		_this17.plusSlides = function (n) {
+			_this17.showSlides(_this17.state.slideIndex + n);
+		};
+
+		_this17.currentSlide = function (n) {
+			_this17.showSlides(n);
+		};
+
+		_this17.showSlides = function (n) {
+			var number = n;
+			if (number > _this17.props.images.length) {
+				number = 1;
+			}
+			if (number < 1) {
+				number = _this17.props.images.length;
+			}
+
+			for (var i = 0; i < _this17.props.images.length; i++) {
+				console.log(_this17['myGallerySlides' + i].current);
+				_this17['myGallerySlides' + i].current.style.display = "none";
+			}
+			for (var i = 0; i < _this17.props.images.length; i++) {
+				_this17['demoRef' + i].current.className = _this17['demoRef' + i].current.className.replace(" active", "");
+			}
+			_this17['myGallerySlides' + (number - 1)].current.style.display = "block";
+			_this17['demoRef' + (number - 1)].current.className += " active";
+
+			_this17.setState({ slideIndex: number });
+		};
+
+		console.log("came in view gallery constructor ", props);
+		_this17.viewGalleryRef = React.createRef();
+		_this17.state = {
+			slideIndex: 1
+		};
+		for (var index = 0; index < props.images.length; index++) {
+			_this17['myGallerySlides' + index] = React.createRef();
+			_this17['demoRef' + index] = React.createRef();
+		}
+		return _this17;
+	}
+
+	_createClass(ViewGallery, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.showSlides(this.state.slideIndex);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this18 = this;
+
+			var _props3 = this.props,
+			    img = _props3.img,
+			    images = _props3.images;
+
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'div',
+					{ className: 'modal fade', ref: this.viewGalleryRef, id: this.props.id, tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true' },
+					React.createElement(
+						'div',
+						{ className: 'modal-dialog modal-fullscreen viewgallery-dialog', role: 'document' },
+						React.createElement(
+							'div',
+							{ className: 'modal-content viewGallery-content' },
+							React.createElement(
+								'div',
+								{ className: 'modal-body' },
+								React.createElement(
+									'div',
+									{ className: 'container' },
+									images.map(function (singleImg, index) {
+										return React.createElement(
+											'div',
+											{ className: 'myGallerySlides', ref: _this18['myGallerySlides' + index], key: 'myGallerySlides' + index },
+											React.createElement('img', { src: singleImg, style: { width: '100%' } })
+										);
+									}),
+									React.createElement(
+										'a',
+										{ className: 'prev', onClick: this.plusSlides(-1) },
+										'\u276E'
+									),
+									React.createElement(
+										'a',
+										{ className: 'next', onClick: this.plusSlides(1) },
+										'\u276F'
+									),
+									React.createElement(
+										'div',
+										{ className: 'row' },
+										images.map(function (singleImg, index) {
+											return React.createElement(
+												'div',
+												{ className: 'column', key: 'column' + index },
+												React.createElement('img', { className: 'demo cursor', ref: _this18['demoRef' + index], src: singleImg, style: { width: '100%' }, onClick: _this18.currentSlide(index), alt: 'The Woods' })
+											);
+										})
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return ViewGallery;
 }(React.Component);
 //   var output = Babel.transform(<Home />, { presets: ["env"] }).code;
 

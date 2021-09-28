@@ -476,9 +476,15 @@ class Gallery extends React.Component {
 	constructor(props) {
 		super(props);
 		console.log("came in gallery constructor ", props);
+		this.state = {
+			selectedImgIndex : -1
+		}
 	}
 
-	componentDidMount() {}
+	openGallery = (index) => {
+		// this.setState({ selectedImgIndex : index})
+		// $(`#viewgalleryId`).modal('show');
+	}
 
 	render() {
 		const { images } = this.props.galleryData;
@@ -487,12 +493,21 @@ class Gallery extends React.Component {
 				<div className="row">
 					{images.map((image, index) => {
 						return (
-							<div className="col-md-3 col-xs-6 col-xs-12 galleryImgDiv" key={index}>
-								<img src={image} />
-							</div>
+							<React.Fragment>
+								<div className="col-md-3 col-xs-6 col-xs-12 galleryImgDiv" key={index} onClick={() => this.openGallery(index)}>
+									<img src={image} />
+								</div>
+							</React.Fragment>
 						);
 					})}
 				</div>
+				{
+					this.state.selectedImgIndex !== -1 ? (
+							<ViewGallery id="viewgalleryId" img={this.state.selectedImgIndex} images={images}>
+								Hello there
+							</ViewGallery>
+					) : ''
+				}
 			</div>
 		);
 	}
@@ -830,6 +845,95 @@ class EnquiryForm extends React.Component {
 				</form>
 			</React.Fragment>
 		)
+	}
+}
+
+class ViewGallery extends React.Component {
+	constructor(props) {
+		super(props);
+		console.log("came in view gallery constructor ", props);
+		this.viewGalleryRef = React.createRef();
+		this.state = {
+			slideIndex : 1
+		}
+		for (let index = 0; index < props.images.length; index++) {
+			this[`myGallerySlides${index}`] = React.createRef();
+			this[`demoRef${index}`] = React.createRef();
+		}
+	}
+
+	componentDidMount() {
+		this.showSlides(this.state.slideIndex);
+	}
+
+	render() {
+		const { img, images } = this.props;
+		return (
+			<div>
+				<div className="modal fade" ref={this.viewGalleryRef} id={this.props.id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div className="modal-dialog modal-fullscreen viewgallery-dialog" role="document">
+						<div className="modal-content viewGallery-content">
+							<div className="modal-body">
+								<div className="container">
+									{
+										images.map((singleImg, index) => {
+											return (
+												<div className="myGallerySlides" ref={this[`myGallerySlides${index}`]} key={`myGallerySlides${index}`}>
+													<img src={singleImg} style={{width:'100%'}} />
+												</div>
+											)
+										})
+									}
+									<a className="prev" onClick={this.plusSlides(-1)}>❮</a>
+  									<a className="next" onClick={this.plusSlides(1)}>❯</a>
+									<div className="row">
+										{
+											images.map((singleImg, index) => {
+												return (
+													<div className="column" key={`column${index}`}>
+														<img className="demo cursor" ref={this[`demoRef${index}`]} src={singleImg} style={{width:'100%'}} onClick={this.currentSlide(index)} alt="The Woods" />
+													</div>
+												)
+											})
+										}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+	plusSlides = (n) => {
+		this.showSlides(this.state.slideIndex + n);
+	}
+
+	currentSlide = (n) => {
+		this.showSlides(n );
+	}
+
+	showSlides = (n) => {
+		let number = n;
+		if (number > this.props.images.length) {
+			number = 1;
+		}
+		if (number < 1) { 
+			number = this.props.images.length;
+		}
+
+		for (var i = 0; i < this.props.images.length; i++) {
+			console.log(this[`myGallerySlides${i}`].current)
+			this[`myGallerySlides${i}`].current.style.display = "none";
+		}
+		for (var i = 0; i < this.props.images.length; i++) {
+			this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
+		}
+		this[`myGallerySlides${number - 1 }`].current.style.display = "block";
+		this[`demoRef${number - 1 }`].current.className += " active";
+
+		this.setState({ slideIndex : number}) 
 	}
 }
 //   var output = Babel.transform(<Home />, { presets: ["env"] }).code;
