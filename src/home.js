@@ -733,7 +733,7 @@ class Footer extends React.Component {
 								{disclaimer}
 							</div>
 						</ModalContainer>
-						<div onClick={() => $('#disclaimerId').modal('show')}>Disclaimer</div>
+						<div onClick={() => $('#disclaimerId').modal('show')} style={{cursor : 'pointer'}}>Disclaimer</div>
 					</strong>
 				</div>
 			</div>

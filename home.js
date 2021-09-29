@@ -1031,7 +1031,7 @@ var Footer = function (_React$Component10) {
 							'div',
 							{ onClick: function onClick() {
 									return $('#disclaimerId').modal('show');
-								} },
+								}, style: { cursor: 'pointer' } },
 							'Disclaimer'
 						)
 					)
