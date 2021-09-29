@@ -109,7 +109,7 @@ var Home = function (_React$Component) {
 			var galleryData = {
 				id: "gallery",
 				title: "Gallery",
-				images: ["https://d1an7tx677lu0y.cloudfront.net/2021/07/pool-min-1.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/22-m-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/et-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/13-copy-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/entrance-m.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/pr-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/14-copy-min.jpg"]
+				images: ["https://d1an7tx677lu0y.cloudfront.net/2021/07/pool-min-1.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/22-m-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/et-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/13-copy-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/entrance-m.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/pr-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/14-copy-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/pool-min-1.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/22-m-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/et-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/13-copy-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/entrance-m.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/pr-min.jpg", "https://d1an7tx677lu0y.cloudfront.net/2021/07/14-copy-min.jpg"]
 			};
 
 			var contactUsData = {
@@ -153,7 +153,7 @@ var Home = function (_React$Component) {
 					React.createElement(
 						'button',
 						{ className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNav', 'aria-controls': 'navbarNav', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
-						React.createElement('i', { 'class': 'fa fa-bars navbarIcon' })
+						React.createElement('i', { className: 'fa fa-bars navbarIcon' })
 					),
 					React.createElement(
 						'div',
@@ -1239,6 +1239,14 @@ var ViewGallery = function (_React$Component13) {
 
 		var _this17 = _possibleConstructorReturn(this, (ViewGallery.__proto__ || Object.getPrototypeOf(ViewGallery)).call(this, props));
 
+		_this17.scrollNext = function () {
+			_this17.galleryListRowRef.current.scrollLeft = _this17.galleryListRowRef.current.scrollLeft + _this17.galleryListRowRef.current.offsetWidth;
+		};
+
+		_this17.scrollBack = function () {
+			_this17.galleryListRowRef.current.scrollLeft = _this17.galleryListRowRef.current.scrollLeft - _this17.galleryListRowRef.current.offsetWidth;
+		};
+
 		_this17.plusSlides = function (n) {
 			var tempIndex = _this17.state.slideIndex + n;
 			if (tempIndex >= _this17.props.images.length) {
@@ -1251,7 +1259,7 @@ var ViewGallery = function (_React$Component13) {
 		};
 
 		_this17.currentSlide = function (n) {
-			_this17.showSlides(n + 1);
+			_this17.showSlides(n);
 		};
 
 		_this17.showSlides = function (n) {
@@ -1260,10 +1268,10 @@ var ViewGallery = function (_React$Component13) {
 				_this17['myGallerySlides' + i].current.style.display = "none";
 			}
 			for (var i = 0; i < _this17.props.images.length; i++) {
-				// this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
+				_this17['demoRef' + i].current.className = _this17['demoRef' + i].current.className.replace(" active", "");
 			}
 			_this17['myGallerySlides' + number].current.style.display = "block";
-			// this[`demoRef${number - 1 }`].current.className += " active";
+			_this17['demoRef' + number].current.className += " active";
 
 			_this17.setState({ slideIndex: number });
 		};
@@ -1276,6 +1284,7 @@ var ViewGallery = function (_React$Component13) {
 			_this17['myGallerySlides' + index] = React.createRef();
 			_this17['demoRef' + index] = React.createRef();
 		}
+		_this17.galleryListRowRef = React.createRef();
 		return _this17;
 	}
 
@@ -1285,6 +1294,12 @@ var ViewGallery = function (_React$Component13) {
 			$('#viewgalleryId').modal('show');
 			this.showSlides(this.state.slideIndex);
 		}
+
+		// Show next images in bottom list(scroll forward bottom list view)
+
+
+		// Show previous images in bottom list(scroll backwards bottom list view)
+
 	}, {
 		key: 'render',
 		value: function render() {
@@ -1299,7 +1314,7 @@ var ViewGallery = function (_React$Component13) {
 				null,
 				React.createElement(
 					'div',
-					{ className: 'modal fade', ref: this.viewGalleryRef, id: this.props.id, tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true' },
+					{ className: 'modal fade', ref: this.viewGalleryRef, id: this.props.id, tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true', style: { padding: '0px' } },
 					React.createElement(
 						'div',
 						{ className: 'modal-dialog modal-fullscreen viewgallery-dialog', role: 'document' },
@@ -1308,20 +1323,16 @@ var ViewGallery = function (_React$Component13) {
 							{ className: 'modal-content viewGallery-content' },
 							React.createElement(
 								'div',
-								{ className: 'modal-header', style: { borderBottom: 'none' } },
+								{ className: 'modal-body' },
 								React.createElement(
 									'button',
 									{ type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', onClick: onClose },
 									React.createElement(
 										'span',
-										{ 'aria-hidden': 'true', style: { fontSize: '30px', color: 'white' } },
+										{ 'aria-hidden': 'true', className: 'closeBtn' },
 										'\xD7'
 									)
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'modal-body' },
+								),
 								React.createElement(
 									'div',
 									{ className: 'container' },
@@ -1332,7 +1343,7 @@ var ViewGallery = function (_React$Component13) {
 											return React.createElement(
 												'div',
 												{ className: 'myGallerySlides', ref: _this18['myGallerySlides' + index], key: 'myGallerySlides' + index },
-												React.createElement('img', { src: images[_this18.state.slideIndex], style: { width: '100%', height: '70vh' } })
+												React.createElement('img', { className: 'viewedImg', src: images[_this18.state.slideIndex] })
 											);
 										}),
 										React.createElement(
@@ -1349,7 +1360,37 @@ var ViewGallery = function (_React$Component13) {
 												} },
 											'\u276F'
 										),
-										React.createElement('div', { className: 'galleryListContainer', style: { margin: 'auto' } })
+										React.createElement(
+											'div',
+											{ className: 'galleryListContainer' },
+											React.createElement(
+												'a',
+												{ id: 'galleryListPrev', onClick: function onClick() {
+														return _this18.scrollBack();
+													} },
+												'\u276E'
+											),
+											React.createElement(
+												'div',
+												{ className: 'rowDiv', ref: this.galleryListRowRef },
+												images.map(function (singleImg, index) {
+													return React.createElement(
+														'div',
+														{ className: 'column', key: 'column' + index },
+														React.createElement('img', { className: 'demo cursor', ref: _this18['demoRef' + index], src: singleImg, onClick: function onClick() {
+																return _this18.currentSlide(index);
+															}, alt: 'The Image' })
+													);
+												})
+											),
+											React.createElement(
+												'a',
+												{ id: 'galleryListNext', onClick: function onClick() {
+														return _this18.scrollNext();
+													} },
+												'\u276F'
+											)
+										)
 									)
 								)
 							)

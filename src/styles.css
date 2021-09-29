@@ -6,6 +6,10 @@
   --fontColor: white;
 }
 
+.btn, a {
+  cursor: pointer;
+} 
+
 .row {
   margin: 0;
 }
@@ -319,7 +323,6 @@ img {vertical-align: middle;}
   color: var(--fontColor, white);
   transform: rotate(-90deg);
   top: 40%;
-  border-radius: 5px 5px 0px 0px;
   background-color: var(--themeColor, black);
   padding: 5px 10px;
 }
@@ -375,26 +378,29 @@ img {vertical-align: middle;}
 /* Open Gallery  */
 .viewgallery-dialog {
     height: 100vh;
-    max-width: -webkit-fill-available;
+    max-width: 100%;
     margin: 0;
-    width: -webkit-fill-available;
-    max-height: -webkit-fill-available;
 }
 
 .viewGallery-content {
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
     opacity: 1;
     background: black;
-    /* height:fit-content; */
+}
+
+.viewedImg {
+  width: 100%;
+  height: 70vh
+}
+
+.closeBtn {
+  font-size: 30px;
+  color: white
 }
 
 #viewgalleryId img {
   vertical-align: middle;
-}
-
-#viewgalleryId .myGallerySlides {
-  /* display: none; */
 }
 
 /* Next & previous buttons */
@@ -402,7 +408,7 @@ img {vertical-align: middle;}
 .viewGallery-content .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 43%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
@@ -434,12 +440,17 @@ img {vertical-align: middle;}
   position: relative;
 }
 
-/* Six columns side by side */
+/* Images List View */
 #viewgalleryId .column {
-  float: left;
-  width: 16.66%;
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
+  cursor: pointer;
 }
-/* col-xs-4 col-sm-3 col-md-2 */
+#viewgalleryId .column img {
+  width: inherit;
+  height: inherit;
+}
 
 /* Add a transparency effect for thumnbail images */
 #viewgalleryId .demo {
@@ -449,10 +460,12 @@ img {vertical-align: middle;}
 #viewgalleryId .active,
 #viewgalleryId .demo:hover {
   opacity: 1;
+  border: 3px solid #0698f3;
 }
 
 .galleryListContainer {
-  display: inline-flex;
+  display: flex;
+  margin-top: 35px
 }
 
 .galleryListContainer #galleryListPrev,
@@ -463,9 +476,16 @@ img {vertical-align: middle;}
     margin: auto 25px;
 }
 
-.galleryListContainer .row {
+.galleryListContainer .rowDiv {
   overflow-x: auto !important;
   white-space: nowrap !important;
+  display: flex;
+  width: inherit
+}
+
+.galleryListContainer .rowDiv::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+  overflow: -moz-scrollbars-none;
 }
 
 .galleryListContainer > .row > .col {

@@ -132,6 +132,14 @@ class Home extends React.Component {
 				"https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg",
 				"https://d1an7tx677lu0y.cloudfront.net/2021/07/pr-min.jpg",
 				"https://d1an7tx677lu0y.cloudfront.net/2021/07/14-copy-min.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/pool-min-1.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/22-m-min.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/et-min.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/13-copy-min.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/entrance-m.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/lobby-min.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/pr-min.jpg",
+				"https://d1an7tx677lu0y.cloudfront.net/2021/07/14-copy-min.jpg",
 			],
 		};
 
@@ -173,7 +181,7 @@ class Home extends React.Component {
 						src="https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png" alt="" />
 				</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<i class="fa fa-bars navbarIcon"></i>
+					<i className="fa fa-bars navbarIcon"></i>
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav d-flex justify-content-end">
@@ -853,6 +861,7 @@ class ViewGallery extends React.Component {
 			this[`myGallerySlides${index}`] = React.createRef();
 			this[`demoRef${index}`] = React.createRef();
 		}
+		this.galleryListRowRef = React.createRef();
 	}
 
 	componentDidMount() {
@@ -860,46 +869,54 @@ class ViewGallery extends React.Component {
 		this.showSlides(this.state.slideIndex);
 	}
 
+	// Show next images in bottom list(scroll forward bottom list view)
+	scrollNext = () => {
+		this.galleryListRowRef.current.scrollLeft = this.galleryListRowRef.current.scrollLeft + this.galleryListRowRef.current.offsetWidth;
+	};
+
+	// Show previous images in bottom list(scroll backwards bottom list view)
+	scrollBack = () => {
+		this.galleryListRowRef.current.scrollLeft = this.galleryListRowRef.current.scrollLeft - this.galleryListRowRef.current.offsetWidth;
+	};
+
 	render() {
 		const { images, onClose} = this.props;
 		return (
 			<div>
-				<div className="modal fade" ref={this.viewGalleryRef} id={this.props.id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div className="modal fade" ref={this.viewGalleryRef} id={this.props.id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{padding : '0px'}}>
 					<div className="modal-dialog modal-fullscreen viewgallery-dialog" role="document">
 						<div className="modal-content viewGallery-content">
-						<div className="modal-header" style={{borderBottom : 'none'}}>
-							<button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={onClose}>
-								<span aria-hidden="true" style={{fontSize: '30px', color: 'white'}}>&times;</span>
-							</button>
-						</div>
 							<div className="modal-body">
+								<button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={onClose}>
+									<span aria-hidden="true" className="closeBtn">&times;</span>
+								</button>
 								<div className="container">
 									<div style={{position : 'relative'}}>
 										{
 											images.map((singleImg, index) => {
 												return (
 													<div className="myGallerySlides" ref={this[`myGallerySlides${index}`]} key={`myGallerySlides${index}`}>
-														<img src={images[this.state.slideIndex]} style={{width:'100%', height: '70vh'}} />
+														<img className="viewedImg" src={images[this.state.slideIndex]} />
 													</div>
 												)
 											})
 										}
 										<a className="prev" onClick={() => this.plusSlides(-1)}>❮</a>
 										<a className="next" onClick={() => this.plusSlides(1)}>❯</a>
-										<div className="galleryListContainer" style={{margin : 'auto'}}>
-											{/* <a id="galleryListPrev" onClick={() => this.plusSlides(-1)}>❮</a>
-											<div className="row">
+										<div className="galleryListContainer" >
+											<a id="galleryListPrev" onClick={() => this.scrollBack()}>❮</a>
+											<div className="rowDiv" ref={this.galleryListRowRef} >
 												{
 													images.map((singleImg, index) => {
 														return (
-															<div className="col" key={`column${index}`}>
-																<img className="demo cursor" ref={this[`demoRef${index}`]} src={singleImg} onClick={() => this.currentSlide(index)} alt="The Woods" />
+															<div className="column" key={`column${index}`}>
+																<img className="demo cursor" ref={this[`demoRef${index}`]} src={singleImg} onClick={() => this.currentSlide(index)} alt="The Image" />
 															</div>
 														)
 													})
 												}
 											</div>
-											<a id="galleryListNext" onClick={() => this.plusSlides(1)}>❯</a> */}
+											<a id="galleryListNext" onClick={() => this.scrollNext()}>❯</a>
 										</div>
 									</div>
 								</div>
@@ -923,7 +940,7 @@ class ViewGallery extends React.Component {
 	}
 
 	currentSlide = (n) => {
-		this.showSlides(n + 1);
+		this.showSlides(n);
 	}
 
 	showSlides = (n) => {
@@ -932,10 +949,10 @@ class ViewGallery extends React.Component {
 			this[`myGallerySlides${i}`].current.style.display = "none";
 		}
 		for (var i = 0; i < this.props.images.length; i++) {
-			// this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
+			this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
 		}
 		this[`myGallerySlides${number}`].current.style.display = "block";
-		// this[`demoRef${number - 1 }`].current.className += " active";
+		this[`demoRef${number}`].current.className += " active";
 
 		this.setState({ slideIndex : number}) 
 	}
