@@ -153,7 +153,7 @@ var Home = function (_React$Component) {
 					React.createElement(
 						'button',
 						{ className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNav', 'aria-controls': 'navbarNav', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
-						React.createElement('span', { className: 'navbar-toggler-icon' })
+						React.createElement('i', { 'class': 'fa fa-bars navbarIcon' })
 					),
 					React.createElement(
 						'div',
