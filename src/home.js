@@ -277,8 +277,8 @@ class Home extends React.Component {
 			<ModalContainer id="enquiryFormId">
 				<EnquiryForm></EnquiryForm>
 			</ModalContainer>
-			<div id="feedback-form" className="feedback-form" onClick={() => $(`#enquiryFormId`).modal('show')}>
-				<a href="#" className="feedback-form-btn btn  btn-lg" id="OpenFormMob">ENQUIRE NOW</a>
+			<div id="enquire-now" className="enquire-now" onClick={() => $(`#enquiryFormId`).modal('show')}>
+				<a href="#" className="enquire-now-btn btn  btn-lg" id="OpenFormMob">ENQUIRE NOW</a>
 			</div>
 		</div>
 		);
@@ -384,7 +384,6 @@ class SlideShow extends React.Component {
 class AboutUs extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in aabout us constructor ", props);
 	}
 
 	render() {
@@ -411,7 +410,6 @@ class AboutUs extends React.Component {
 class Amenities extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in amenities constructor ", props);
 	}
 
 	changeBackground = (e) => {
@@ -432,7 +430,7 @@ class Amenities extends React.Component {
 						{
 							list.map((amenityObj, index) => {
 								return (
-									<div className={`col-md-2 col-sm-4 col-xs-6 ${this.props.containerCss} amenityIconContainr`}
+									<div className={`col-5 col-sm-4 col-md-3 col-lg-2 ${this.props.containerCss} amenityIconContainr`}
 										style={{ textAlign: "center" }}
 										key={`amenityIcon_${index}`}
 										onMouseOver={this.changeBackground}
@@ -445,7 +443,7 @@ class Amenities extends React.Component {
 						}
 					</div>
 				</div>
-				<Carousel sectionId={`${id}_carousel`} list={images} containerCss="">
+				<Carousel sectionId={`${id}_carousel`} list={images} containerCss="" containerHeight="carouselHeight">
 					<h5>...</h5>
 					<p>...</p>
 				</Carousel>
@@ -458,7 +456,6 @@ class Amenities extends React.Component {
 class VirtualTour extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in virtual tour constructor ", props);
 	}
 
 	render() {
@@ -466,7 +463,7 @@ class VirtualTour extends React.Component {
 		return (
 			<div id={this.props.section} className="amenityContainer">
 				<h2 className="sectionTextColor sectionTitle">{title}</h2>
-				<Carousel sectionId={id} list={list} containerCss="sectionContent"></Carousel>
+				<Carousel sectionId={id} list={list} containerCss="sectionContent" containerHeight="carouselHeight_1"></Carousel>
 			</div>
 		);
 	}
@@ -475,15 +472,17 @@ class VirtualTour extends React.Component {
 class Gallery extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in gallery constructor ", props);
 		this.state = {
 			selectedImgIndex : -1
 		}
 	}
 
 	openGallery = (index) => {
-		// this.setState({ selectedImgIndex : index})
-		// $(`#viewgalleryId`).modal('show');
+		this.setState({ selectedImgIndex : index})
+	}
+
+	removeViewGallery = () => {
+		this.setState({ selectedImgIndex : -1})
 	}
 
 	render() {
@@ -494,7 +493,7 @@ class Gallery extends React.Component {
 					{images.map((image, index) => {
 						return (
 							<React.Fragment>
-								<div className="col-md-3 col-xs-6 col-xs-12 galleryImgDiv" key={index} onClick={() => this.openGallery(index)}>
+								<div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 galleryImgDiv" key={`gallery${index}`} onClick={() => this.openGallery(index)}>
 									<img src={image} />
 								</div>
 							</React.Fragment>
@@ -503,7 +502,7 @@ class Gallery extends React.Component {
 				</div>
 				{
 					this.state.selectedImgIndex !== -1 ? (
-							<ViewGallery id="viewgalleryId" img={this.state.selectedImgIndex} images={images}>
+							<ViewGallery id="viewgalleryId" imgIndex={this.state.selectedImgIndex} images={images} onClose={this.removeViewGallery}>
 								Hello there
 							</ViewGallery>
 					) : ''
@@ -516,7 +515,6 @@ class Gallery extends React.Component {
 class FloorPlan extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in floor plan constructor ", props);
 	}
 
 	componentDidMount() {}
@@ -526,7 +524,7 @@ class FloorPlan extends React.Component {
 		return (
 			<div id={this.props.section} className="amenityContainer">
 				<h2 className="sectionTextColor sectionTitle">{title}</h2>
-				<Carousel sectionId={id} list={images} containerCss="sectionContent"></Carousel>
+				<Carousel sectionId={id} list={images} containerCss="sectionContent" containerHeight="carouselHeight_1"></Carousel>
 			</div>
 		);
 	}
@@ -535,7 +533,6 @@ class FloorPlan extends React.Component {
 class ContactUs extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in contact us constructor ", props);
 	}
 
 	render() {
@@ -613,7 +610,6 @@ class ContactUs extends React.Component {
 class Carousel extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in carousel constructor ", props);
 	}
 
 	componentDidMount() {
@@ -621,7 +617,7 @@ class Carousel extends React.Component {
 	}
 
   render() {
-	const { sectionId, list, containerCss} = this.props;
+	const { sectionId, list, containerCss, containerHeight} = this.props;
 	return (
 	  <div id={sectionId} className={`carousel slide ${containerCss}`} data-ride="carousel">
 		{list.map((item, index) => {
@@ -652,7 +648,7 @@ class Carousel extends React.Component {
 			} else if (sectionId == "virtualTour") {
 			  source = item.tourImageLink;
 			  snippet = (
-				<div className="centered">
+				<div className="">
 				  <h4></h4>
 				  <button
 					className="btn tourBtn"
@@ -668,8 +664,8 @@ class Carousel extends React.Component {
 			return (
 				<div className={`carousel-item ${index == 0 ? "active" : ""}`}
 					key={index}>
-					<img className="d-block w-100 carouselHeight" src={source} alt="First slide" />
-					<div className="centered d-none d-md-block">
+					<img className={`d-block w-100 ${containerHeight}`} src={source} alt="First slide" />
+					<div className="centered d-md-block">
 				  		{snippet}
 				</div>
 			  </div>
@@ -705,7 +701,6 @@ class Carousel extends React.Component {
 class Footer extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in footer constructor ", props);
 	}
 
 	componentDidMount() {}
@@ -770,7 +765,6 @@ class ModalContainer extends React.Component {
 class EnquiryForm extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in contact us constructor ", props);
 		this.state = {
 			name : '',
 			email : '',
@@ -851,10 +845,9 @@ class EnquiryForm extends React.Component {
 class ViewGallery extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("came in view gallery constructor ", props);
 		this.viewGalleryRef = React.createRef();
 		this.state = {
-			slideIndex : 1
+			slideIndex : props.imgIndex
 		}
 		for (let index = 0; index < props.images.length; index++) {
 			this[`myGallerySlides${index}`] = React.createRef();
@@ -863,39 +856,51 @@ class ViewGallery extends React.Component {
 	}
 
 	componentDidMount() {
+		$(`#viewgalleryId`).modal('show');
 		this.showSlides(this.state.slideIndex);
 	}
 
 	render() {
-		const { img, images } = this.props;
+		const { images, onClose} = this.props;
 		return (
 			<div>
 				<div className="modal fade" ref={this.viewGalleryRef} id={this.props.id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div className="modal-dialog modal-fullscreen viewgallery-dialog" role="document">
 						<div className="modal-content viewGallery-content">
+						<div className="modal-header" style={{borderBottom : 'none'}}>
+							<button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={onClose}>
+								<span aria-hidden="true" style={{fontSize: '30px', color: 'white'}}>&times;</span>
+							</button>
+						</div>
 							<div className="modal-body">
 								<div className="container">
-									{
-										images.map((singleImg, index) => {
-											return (
-												<div className="myGallerySlides" ref={this[`myGallerySlides${index}`]} key={`myGallerySlides${index}`}>
-													<img src={singleImg} style={{width:'100%'}} />
-												</div>
-											)
-										})
-									}
-									<a className="prev" onClick={this.plusSlides(-1)}>❮</a>
-  									<a className="next" onClick={this.plusSlides(1)}>❯</a>
-									<div className="row">
+									<div style={{position : 'relative'}}>
 										{
 											images.map((singleImg, index) => {
 												return (
-													<div className="column" key={`column${index}`}>
-														<img className="demo cursor" ref={this[`demoRef${index}`]} src={singleImg} style={{width:'100%'}} onClick={this.currentSlide(index)} alt="The Woods" />
+													<div className="myGallerySlides" ref={this[`myGallerySlides${index}`]} key={`myGallerySlides${index}`}>
+														<img src={images[this.state.slideIndex]} style={{width:'100%', height: '70vh'}} />
 													</div>
 												)
 											})
 										}
+										<a className="prev" onClick={() => this.plusSlides(-1)}>❮</a>
+										<a className="next" onClick={() => this.plusSlides(1)}>❯</a>
+										<div className="galleryListContainer" style={{margin : 'auto'}}>
+											{/* <a id="galleryListPrev" onClick={() => this.plusSlides(-1)}>❮</a>
+											<div className="row">
+												{
+													images.map((singleImg, index) => {
+														return (
+															<div className="col" key={`column${index}`}>
+																<img className="demo cursor" ref={this[`demoRef${index}`]} src={singleImg} onClick={() => this.currentSlide(index)} alt="The Woods" />
+															</div>
+														)
+													})
+												}
+											</div>
+											<a id="galleryListNext" onClick={() => this.plusSlides(1)}>❯</a> */}
+										</div>
 									</div>
 								</div>
 							</div>
@@ -907,31 +912,30 @@ class ViewGallery extends React.Component {
 	}
 
 	plusSlides = (n) => {
-		this.showSlides(this.state.slideIndex + n);
+		let tempIndex = this.state.slideIndex + n;
+		if (tempIndex >= this.props.images.length) {
+			tempIndex = 0;
+		}
+		if (tempIndex < 0) { 
+			tempIndex = this.props.images.length - 1;
+		}
+		this.showSlides(tempIndex);
 	}
 
 	currentSlide = (n) => {
-		this.showSlides(n );
+		this.showSlides(n + 1);
 	}
 
 	showSlides = (n) => {
 		let number = n;
-		if (number > this.props.images.length) {
-			number = 1;
-		}
-		if (number < 1) { 
-			number = this.props.images.length;
-		}
-
 		for (var i = 0; i < this.props.images.length; i++) {
-			console.log(this[`myGallerySlides${i}`].current)
 			this[`myGallerySlides${i}`].current.style.display = "none";
 		}
 		for (var i = 0; i < this.props.images.length; i++) {
-			this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
+			// this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
 		}
-		this[`myGallerySlides${number - 1 }`].current.style.display = "block";
-		this[`demoRef${number - 1 }`].current.className += " active";
+		this[`myGallerySlides${number}`].current.style.display = "block";
+		// this[`demoRef${number - 1 }`].current.className += " active";
 
 		this.setState({ slideIndex : number}) 
 	}

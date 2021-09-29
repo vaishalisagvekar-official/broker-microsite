@@ -73,24 +73,85 @@
 	 text-align: center;
 }
 
-.amenityContainer{
+.amenityTitle{
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* .amenityContainer .sectionContent .col-xs-6 {
+  width: 50%;
+} */
+@media screen and (min-width: 577px) {
+  .sectionContent {
+    padding: 30px;
+    justify-content: center;
+  }
+
+  .amenityIconContainr{
+    margin: 15px;
+    border: 1px solid #3c3939;
+    padding: 35px 15px;
+  }
+
+  .amenityContainer{
     background-image: url('https://theratio.s3.amazonaws.com/images/bg2-process.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 	  padding: 60px;
+  }
+
+  .carouselHeight {
+    height: 90vh;
+  }
+
+  .carouselHeight_1 {
+    height: 80vh;
+  }
 }
 
-.amenityIconContainr{
-  margin: 15px;
-  border: 1px solid #3c3939;
-  padding: 35px 15px;
+@media screen and (max-width: 576px) {
+  .sectionContent {
+    padding: 0px;
+    justify-content: center;
+  }
+
+  .amenityIconContainr{
+    margin: 8px;
+    border: 1px solid #3c3939;
+    padding: 35px 15px;
+  }
+
+  .amenityContainer{
+    background-image: url('https://theratio.s3.amazonaws.com/images/bg2-process.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	  padding: 20px;
+  }
+
+  .carouselHeight {
+    height: 80%;
+  }
+
+  .carouselHeight_1 {
+    height: 60%;
+  }
 }
 
-.amenityTitle{
-  margin-top: 16px;
-  font-size: 16px;
-  font-weight: 600;
+@media screen and (max-width: 768px) {
+  .amenityContainer{
+    background-image: url('https://theratio.s3.amazonaws.com/images/bg2-process.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	  padding: 20px;
+  }
+
+  .carouselHeight_1 {
+    height: 80%;
+  }
 }
 
 .centered {
@@ -108,14 +169,6 @@
   background-color: rgba(55, 189, 60, 0.84);
   color: var(--fontColor, white);
   border-radius: 25px;
-}
-
-.carouselHeight {
-    height: 100vh;
-}
-
-.sectionContent {
-    padding: 30px;
 }
 
 .galleryImgDiv{
@@ -240,7 +293,7 @@ img {vertical-align: middle;}
 	 .slideshow-container .text {font-size: 11px}
 }
 
-.feedback-form
+.enquire-now
 {
   position:fixed;
   top:15%;
@@ -250,12 +303,12 @@ img {vertical-align: middle;}
   
 }
 
-#feedback-form  .btn.focus, .btn:focus {
+#enquire-now  .btn.focus, .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
 }
 
-.feedback-form-btn
+.enquire-now-btn
 {
   position: absolute;
   left: -100px;
@@ -268,7 +321,7 @@ img {vertical-align: middle;}
 }
 
 @media only screen and (max-width: 425px){
-	#feedback-form{display: none;}
+	#enquire-now{display: none;}
 }
 
 #scrollUp {
@@ -328,6 +381,8 @@ img {vertical-align: middle;}
     width: -webkit-fill-available;
     height: -webkit-fill-available;
     opacity: 1;
+    background: black;
+    /* height:fit-content; */
 }
 
 #viewgalleryId img {
@@ -339,15 +394,15 @@ img {vertical-align: middle;}
 }
 
 /* Next & previous buttons */
-#viewgalleryId .prev,
-#viewgalleryId .next {
+.viewGallery-content .prev,
+.viewGallery-content .next {
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
@@ -356,14 +411,15 @@ img {vertical-align: middle;}
 }
 
 /* Position the "next button" to the right */
-#viewgalleryId .next {
+.viewGallery-content .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-#viewgalleryId .prev:hover,
-#viewgalleryId .next:hover {
+.viewGallery-content .prev:hover,
+.viewGallery-content .next:hover {
+  color: rgb(241, 211, 211) !important;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -371,6 +427,7 @@ img {vertical-align: middle;}
   content: "";
   display: table;
   clear: both;
+  position: relative;
 }
 
 /* Six columns side by side */
@@ -378,6 +435,7 @@ img {vertical-align: middle;}
   float: left;
   width: 16.66%;
 }
+/* col-xs-4 col-sm-3 col-md-2 */
 
 /* Add a transparency effect for thumnbail images */
 #viewgalleryId .demo {
@@ -388,3 +446,31 @@ img {vertical-align: middle;}
 #viewgalleryId .demo:hover {
   opacity: 1;
 }
+
+.galleryListContainer {
+  display: inline-flex;
+}
+
+.galleryListContainer #galleryListPrev,
+.galleryListContainer #galleryListNext {
+    color: white;
+    font-size: 25px;
+    vertical-align: middle;
+    margin: auto 25px;
+}
+
+.galleryListContainer .row {
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+}
+
+.galleryListContainer > .row > .col {
+  display: inline-block;
+  float: none;
+  /* width: 25%; */
+}
+
+.demo {
+  /* width: 80px;
+  height: 80px; */
+ }

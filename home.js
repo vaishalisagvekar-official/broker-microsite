@@ -271,12 +271,12 @@ var Home = function (_React$Component) {
 				),
 				React.createElement(
 					'div',
-					{ id: 'feedback-form', className: 'feedback-form', onClick: function onClick() {
+					{ id: 'enquire-now', className: 'enquire-now', onClick: function onClick() {
 							return $('#enquiryFormId').modal('show');
 						} },
 					React.createElement(
 						'a',
-						{ href: '#', className: 'feedback-form-btn btn  btn-lg', id: 'OpenFormMob' },
+						{ href: '#', className: 'enquire-now-btn btn  btn-lg', id: 'OpenFormMob' },
 						'ENQUIRE NOW'
 					)
 				)
@@ -411,10 +411,7 @@ var AboutUs = function (_React$Component3) {
 	function AboutUs(props) {
 		_classCallCheck(this, AboutUs);
 
-		var _this5 = _possibleConstructorReturn(this, (AboutUs.__proto__ || Object.getPrototypeOf(AboutUs)).call(this, props));
-
-		console.log("came in aabout us constructor ", props);
-		return _this5;
+		return _possibleConstructorReturn(this, (AboutUs.__proto__ || Object.getPrototypeOf(AboutUs)).call(this, props));
 	}
 
 	_createClass(AboutUs, [{
@@ -483,7 +480,6 @@ var Amenities = function (_React$Component4) {
 			e.target.style.background = 'none';
 		};
 
-		console.log("came in amenities constructor ", props);
 		return _this6;
 	}
 
@@ -515,7 +511,7 @@ var Amenities = function (_React$Component4) {
 						list.map(function (amenityObj, index) {
 							return React.createElement(
 								'div',
-								{ className: 'col-md-2 col-sm-4 col-xs-6 ' + _this7.props.containerCss + ' amenityIconContainr',
+								{ className: 'col-5 col-sm-4 col-md-3 col-lg-2 ' + _this7.props.containerCss + ' amenityIconContainr',
 									style: { textAlign: "center" },
 									key: 'amenityIcon_' + index,
 									onMouseOver: _this7.changeBackground,
@@ -532,7 +528,7 @@ var Amenities = function (_React$Component4) {
 				),
 				React.createElement(
 					Carousel,
-					{ sectionId: id + '_carousel', list: images, containerCss: '' },
+					{ sectionId: id + '_carousel', list: images, containerCss: '', containerHeight: 'carouselHeight' },
 					React.createElement(
 						'h5',
 						null,
@@ -557,10 +553,7 @@ var VirtualTour = function (_React$Component5) {
 	function VirtualTour(props) {
 		_classCallCheck(this, VirtualTour);
 
-		var _this8 = _possibleConstructorReturn(this, (VirtualTour.__proto__ || Object.getPrototypeOf(VirtualTour)).call(this, props));
-
-		console.log("came in virtual tour constructor ", props);
-		return _this8;
+		return _possibleConstructorReturn(this, (VirtualTour.__proto__ || Object.getPrototypeOf(VirtualTour)).call(this, props));
 	}
 
 	_createClass(VirtualTour, [{
@@ -579,7 +572,7 @@ var VirtualTour = function (_React$Component5) {
 					{ className: 'sectionTextColor sectionTitle' },
 					title
 				),
-				React.createElement(Carousel, { sectionId: id, list: list, containerCss: 'sectionContent' })
+				React.createElement(Carousel, { sectionId: id, list: list, containerCss: 'sectionContent', containerHeight: 'carouselHeight_1' })
 			);
 		}
 	}]);
@@ -596,11 +589,13 @@ var Gallery = function (_React$Component6) {
 		var _this9 = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this, props));
 
 		_this9.openGallery = function (index) {
-			// this.setState({ selectedImgIndex : index})
-			// $(`#viewgalleryId`).modal('show');
+			_this9.setState({ selectedImgIndex: index });
 		};
 
-		console.log("came in gallery constructor ", props);
+		_this9.removeViewGallery = function () {
+			_this9.setState({ selectedImgIndex: -1 });
+		};
+
 		_this9.state = {
 			selectedImgIndex: -1
 		};
@@ -626,7 +621,7 @@ var Gallery = function (_React$Component6) {
 							null,
 							React.createElement(
 								'div',
-								{ className: 'col-md-3 col-xs-6 col-xs-12 galleryImgDiv', key: index, onClick: function onClick() {
+								{ className: 'col-xs-12 col-sm-6 col-md-4 col-lg-3 galleryImgDiv', key: 'gallery' + index, onClick: function onClick() {
 										return _this10.openGallery(index);
 									} },
 								React.createElement('img', { src: image })
@@ -636,7 +631,7 @@ var Gallery = function (_React$Component6) {
 				),
 				this.state.selectedImgIndex !== -1 ? React.createElement(
 					ViewGallery,
-					{ id: 'viewgalleryId', img: this.state.selectedImgIndex, images: images },
+					{ id: 'viewgalleryId', imgIndex: this.state.selectedImgIndex, images: images, onClose: this.removeViewGallery },
 					'Hello there'
 				) : ''
 			);
@@ -652,10 +647,7 @@ var FloorPlan = function (_React$Component7) {
 	function FloorPlan(props) {
 		_classCallCheck(this, FloorPlan);
 
-		var _this11 = _possibleConstructorReturn(this, (FloorPlan.__proto__ || Object.getPrototypeOf(FloorPlan)).call(this, props));
-
-		console.log("came in floor plan constructor ", props);
-		return _this11;
+		return _possibleConstructorReturn(this, (FloorPlan.__proto__ || Object.getPrototypeOf(FloorPlan)).call(this, props));
 	}
 
 	_createClass(FloorPlan, [{
@@ -677,7 +669,7 @@ var FloorPlan = function (_React$Component7) {
 					{ className: 'sectionTextColor sectionTitle' },
 					title
 				),
-				React.createElement(Carousel, { sectionId: id, list: images, containerCss: 'sectionContent' })
+				React.createElement(Carousel, { sectionId: id, list: images, containerCss: 'sectionContent', containerHeight: 'carouselHeight_1' })
 			);
 		}
 	}]);
@@ -698,7 +690,6 @@ var ContactUs = function (_React$Component8) {
 			console.log("form submitted");
 		};
 
-		console.log("came in contact us constructor ", props);
 		return _this12;
 	}
 
@@ -859,10 +850,7 @@ var Carousel = function (_React$Component9) {
 	function Carousel(props) {
 		_classCallCheck(this, Carousel);
 
-		var _this13 = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
-
-		console.log("came in carousel constructor ", props);
-		return _this13;
+		return _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
 	}
 
 	_createClass(Carousel, [{
@@ -876,7 +864,8 @@ var Carousel = function (_React$Component9) {
 			var _props2 = this.props,
 			    sectionId = _props2.sectionId,
 			    list = _props2.list,
-			    containerCss = _props2.containerCss;
+			    containerCss = _props2.containerCss,
+			    containerHeight = _props2.containerHeight;
 
 			return React.createElement(
 				'div',
@@ -912,7 +901,7 @@ var Carousel = function (_React$Component9) {
 							source = item.tourImageLink;
 							snippet = React.createElement(
 								'div',
-								{ className: 'centered' },
+								{ className: '' },
 								React.createElement('h4', null),
 								React.createElement(
 									'button',
@@ -932,10 +921,10 @@ var Carousel = function (_React$Component9) {
 							'div',
 							{ className: 'carousel-item ' + (index == 0 ? "active" : ""),
 								key: index },
-							React.createElement('img', { className: 'd-block w-100 carouselHeight', src: source, alt: 'First slide' }),
+							React.createElement('img', { className: 'd-block w-100 ' + containerHeight, src: source, alt: 'First slide' }),
 							React.createElement(
 								'div',
-								{ className: 'centered d-none d-md-block' },
+								{ className: 'centered d-md-block' },
 								snippet
 							)
 						);
@@ -986,10 +975,7 @@ var Footer = function (_React$Component10) {
 	function Footer(props) {
 		_classCallCheck(this, Footer);
 
-		var _this14 = _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
-
-		console.log("came in footer constructor ", props);
-		return _this14;
+		return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
 	}
 
 	_createClass(Footer, [{
@@ -1120,7 +1106,6 @@ var EnquiryForm = function (_React$Component12) {
 			_this16.setState(inputData);
 		};
 
-		console.log("came in contact us constructor ", props);
 		_this16.state = {
 			name: '',
 			email: '',
@@ -1255,39 +1240,37 @@ var ViewGallery = function (_React$Component13) {
 		var _this17 = _possibleConstructorReturn(this, (ViewGallery.__proto__ || Object.getPrototypeOf(ViewGallery)).call(this, props));
 
 		_this17.plusSlides = function (n) {
-			_this17.showSlides(_this17.state.slideIndex + n);
+			var tempIndex = _this17.state.slideIndex + n;
+			if (tempIndex >= _this17.props.images.length) {
+				tempIndex = 0;
+			}
+			if (tempIndex < 0) {
+				tempIndex = _this17.props.images.length - 1;
+			}
+			_this17.showSlides(tempIndex);
 		};
 
 		_this17.currentSlide = function (n) {
-			_this17.showSlides(n);
+			_this17.showSlides(n + 1);
 		};
 
 		_this17.showSlides = function (n) {
 			var number = n;
-			if (number > _this17.props.images.length) {
-				number = 1;
-			}
-			if (number < 1) {
-				number = _this17.props.images.length;
-			}
-
 			for (var i = 0; i < _this17.props.images.length; i++) {
-				console.log(_this17['myGallerySlides' + i].current);
 				_this17['myGallerySlides' + i].current.style.display = "none";
 			}
 			for (var i = 0; i < _this17.props.images.length; i++) {
-				_this17['demoRef' + i].current.className = _this17['demoRef' + i].current.className.replace(" active", "");
+				// this[`demoRef${i}`].current.className = this[`demoRef${i}`].current.className.replace(" active", "");
 			}
-			_this17['myGallerySlides' + (number - 1)].current.style.display = "block";
-			_this17['demoRef' + (number - 1)].current.className += " active";
+			_this17['myGallerySlides' + number].current.style.display = "block";
+			// this[`demoRef${number - 1 }`].current.className += " active";
 
 			_this17.setState({ slideIndex: number });
 		};
 
-		console.log("came in view gallery constructor ", props);
 		_this17.viewGalleryRef = React.createRef();
 		_this17.state = {
-			slideIndex: 1
+			slideIndex: props.imgIndex
 		};
 		for (var index = 0; index < props.images.length; index++) {
 			_this17['myGallerySlides' + index] = React.createRef();
@@ -1299,6 +1282,7 @@ var ViewGallery = function (_React$Component13) {
 	_createClass(ViewGallery, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			$('#viewgalleryId').modal('show');
 			this.showSlides(this.state.slideIndex);
 		}
 	}, {
@@ -1307,8 +1291,8 @@ var ViewGallery = function (_React$Component13) {
 			var _this18 = this;
 
 			var _props3 = this.props,
-			    img = _props3.img,
-			    images = _props3.images;
+			    images = _props3.images,
+			    onClose = _props3.onClose;
 
 			return React.createElement(
 				'div',
@@ -1324,37 +1308,48 @@ var ViewGallery = function (_React$Component13) {
 							{ className: 'modal-content viewGallery-content' },
 							React.createElement(
 								'div',
+								{ className: 'modal-header', style: { borderBottom: 'none' } },
+								React.createElement(
+									'button',
+									{ type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', onClick: onClose },
+									React.createElement(
+										'span',
+										{ 'aria-hidden': 'true', style: { fontSize: '30px', color: 'white' } },
+										'\xD7'
+									)
+								)
+							),
+							React.createElement(
+								'div',
 								{ className: 'modal-body' },
 								React.createElement(
 									'div',
 									{ className: 'container' },
-									images.map(function (singleImg, index) {
-										return React.createElement(
-											'div',
-											{ className: 'myGallerySlides', ref: _this18['myGallerySlides' + index], key: 'myGallerySlides' + index },
-											React.createElement('img', { src: singleImg, style: { width: '100%' } })
-										);
-									}),
-									React.createElement(
-										'a',
-										{ className: 'prev', onClick: this.plusSlides(-1) },
-										'\u276E'
-									),
-									React.createElement(
-										'a',
-										{ className: 'next', onClick: this.plusSlides(1) },
-										'\u276F'
-									),
 									React.createElement(
 										'div',
-										{ className: 'row' },
+										{ style: { position: 'relative' } },
 										images.map(function (singleImg, index) {
 											return React.createElement(
 												'div',
-												{ className: 'column', key: 'column' + index },
-												React.createElement('img', { className: 'demo cursor', ref: _this18['demoRef' + index], src: singleImg, style: { width: '100%' }, onClick: _this18.currentSlide(index), alt: 'The Woods' })
+												{ className: 'myGallerySlides', ref: _this18['myGallerySlides' + index], key: 'myGallerySlides' + index },
+												React.createElement('img', { src: images[_this18.state.slideIndex], style: { width: '100%', height: '70vh' } })
 											);
-										})
+										}),
+										React.createElement(
+											'a',
+											{ className: 'prev', onClick: function onClick() {
+													return _this18.plusSlides(-1);
+												} },
+											'\u276E'
+										),
+										React.createElement(
+											'a',
+											{ className: 'next', onClick: function onClick() {
+													return _this18.plusSlides(1);
+												} },
+											'\u276F'
+										),
+										React.createElement('div', { className: 'galleryListContainer', style: { margin: 'auto' } })
 									)
 								)
 							)
