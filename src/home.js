@@ -173,8 +173,7 @@ class Home extends React.Component {
 						src="https://cp.kohinoorsquare.in/praful-jadhav/wp-content/uploads/2020/08/logo-kohinoor.png" alt="" />
 				</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-bars navbarIcon"></i>
-					{/* <span className="navbar-toggler-icon"></span> */}
+					<i class="fa fa-bars navbarIcon"></i>
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav d-flex justify-content-end">
